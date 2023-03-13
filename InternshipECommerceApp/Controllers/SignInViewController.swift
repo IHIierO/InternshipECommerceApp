@@ -20,6 +20,7 @@ class SignInViewController: UIViewController {
     private func setupController() {
         view.backgroundColor = .systemBackground
         view.addSubview(signInView)
+        signInView.delegate = self
     }
     
     private func setConstraints() {
@@ -30,6 +31,19 @@ class SignInViewController: UIViewController {
             signInView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
-    
+}
 
+// MARK: - Delegate
+extension SignInViewController: SignInViewProtocol {
+    func showTabBar() {
+        let tabBar = TabBarController()
+        tabBar.modalTransitionStyle = .crossDissolve
+        tabBar.modalPresentationStyle = .fullScreen
+        present(tabBar, animated: true)
+    }
+    
+    func showLoginPage() {
+        let logInPage = LogInViewController()
+        navigationController?.pushViewController(logInPage, animated: true)
+    }
 }

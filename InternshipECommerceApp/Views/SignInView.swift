@@ -7,9 +7,16 @@
 
 import UIKit
 
+protocol SignInViewProtocol: AnyObject {
+    func showLoginPage()
+    func showTabBar()
+}
+
 class SignInView: UIView {
     
     private let viewModel = SignInViewViewModel()
+    
+    public weak var delegate: SignInViewProtocol?
     
     private let signInLabel: UILabel = {
        let label = UILabel()
@@ -90,10 +97,29 @@ class SignInView: UIView {
         backgroundColor = .systemBackground
         addSubviews(signInLabel, firstNameTextView, lastNameTextView, emailTextView, signInButton, loginLabel, loginButton, signInWithGoogleButton, signInWithAppleButton)
         setConstraints()
+        loginButton.addTarget(self, action: #selector(showLoginPage), for: .touchUpInside)
+        signInButton.addTarget(self, action: #selector(showTabBar), for: .touchUpInside)
+        signInWithGoogleButton.addTarget(self, action: #selector(showTabBar), for: .touchUpInside)
+        signInWithAppleButton.addTarget(self, action: #selector(showTabBar), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func showLoginPage() {
+        delegate?.showLoginPage()
+    }
+    
+    @objc func showTabBar(sender: UIButton) {
+        if sender == signInWithGoogleButton || sender == signInWithAppleButton {
+            delegate?.showTabBar()
+        }
+        if viewModel.checkValidate(for: emailTextView) {
+            delegate?.showTabBar()
+        } else {
+            print("Incorrect email")
+        }
     }
     
     private func setConstraints() {
