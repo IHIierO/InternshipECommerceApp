@@ -54,9 +54,8 @@ class TabBarController: UITabBarController{
     }
     
     private func createNavigationControllers(viewControllers: UIViewController, tabBarItemImage: String, tabBarItemBage: String?, tag: Int) -> UINavigationController{
-        let tabBarItem = UITabBarItem(title: nil, image: UIImage(named: tabBarItemImage), tag: tag)
+        let tabBarItem = UITabBarItem(title: nil, image: UIImage(named: tabBarItemImage)?.withRenderingMode(.alwaysOriginal), tag: tag)
         tabBarItem.imageInsets = UIEdgeInsets(top: 10, left: .zero, bottom: -10, right: .zero)
-        tabBarItem.titlePositionAdjustment = .init(horizontal: 0, vertical: 10 )
         tabBarItem.badgeValue = tabBarItemBage
         let navigationController = UINavigationController(rootViewController: viewControllers)
         navigationController.tabBarItem = tabBarItem
@@ -64,11 +63,7 @@ class TabBarController: UITabBarController{
     }
     
     private func setTabBarAppearance(){
-        tabBar.shadowImage = UIImage()
-        tabBar.backgroundImage = UIImage()
-        //tabBar.isTranslucent = true
-        tabBar.backgroundColor = UIColor(hexString: "#FAF9FF")
-        
+        UITabBar.setTransparentTabbar()
         let customLayer = CAShapeLayer()
         customLayer.path = createPath()
         tabBar.layer.insertSublayer(customLayer, at: 0)
@@ -81,7 +76,6 @@ class TabBarController: UITabBarController{
     private func createPath() -> CGPath {
         
         let cornerRad: CGFloat = 30.0
-        let centerWidth = self.tabBar.frame.width / 2
         let topLeftArc: CGPoint = CGPoint(x: self.tabBar.bounds.minX + cornerRad, y: self.tabBar.bounds.minY + cornerRad)
         let topRightArc: CGPoint = CGPoint(x: self.tabBar.bounds.maxX - cornerRad, y: self.tabBar.bounds.minY + cornerRad)
         let botRightArc: CGPoint = CGPoint(x: self.tabBar.bounds.maxX - cornerRad, y: self.tabBar.bounds.maxY + 10)

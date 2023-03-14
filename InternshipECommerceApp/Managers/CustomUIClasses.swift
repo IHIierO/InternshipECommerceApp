@@ -11,12 +11,17 @@ import UIKit
 class DefaultUITextField: UITextField {
     
     var placeholderText: String
+    var placeholderTextColor: UIColor
     
-    init(placeholderText: String){
+    init(placeholderText: String, placeholderTextColor: UIColor = .placeholderText){
         self.placeholderText = placeholderText
+        self.placeholderTextColor = placeholderTextColor
         super.init(frame: .zero)
         
-        self.placeholder = placeholderText
+        attributedPlaceholder = NSAttributedString(
+            string: placeholderText,
+            attributes: [NSAttributedString.Key.foregroundColor: placeholderTextColor]
+        )
         //self.borderStyle = .roundedRect
         self.returnKeyType = .done
         self.translatesAutoresizingMaskIntoConstraints = false

@@ -43,6 +43,12 @@
 		390F480A29BF64DA005DBE74 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F480929BF64DA005DBE74 /* HomeViewController.swift */; };
 		390F480C29BF652C005DBE74 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F480B29BF652C005DBE74 /* HomeView.swift */; };
 		390F480E29BF71BA005DBE74 /* ValidationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F480D29BF71BA005DBE74 /* ValidationExtension.swift */; };
+		390F481029C08019005DBE74 /* HomeViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F480F29C08019005DBE74 /* HomeViewViewModel.swift */; };
+		390F481229C08493005DBE74 /* CreateSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F481129C08493005DBE74 /* CreateSections.swift */; };
+		390F481529C09087005DBE74 /* HeaderForCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F481429C09087005DBE74 /* HeaderForCollectionView.swift */; };
+		390F481729C0B404005DBE74 /* TransparentTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F481629C0B404005DBE74 /* TransparentTabbar.swift */; };
+		390F481929C0BBC3005DBE74 /* RightBarButtonItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F481829C0BBC3005DBE74 /* RightBarButtonItemView.swift */; };
+		390F481B29C0D388005DBE74 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F481A29C0D388005DBE74 /* SearchBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +90,12 @@
 		390F480929BF64DA005DBE74 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		390F480B29BF652C005DBE74 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		390F480D29BF71BA005DBE74 /* ValidationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationExtension.swift; sourceTree = "<group>"; };
+		390F480F29C08019005DBE74 /* HomeViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewViewModel.swift; sourceTree = "<group>"; };
+		390F481129C08493005DBE74 /* CreateSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSections.swift; sourceTree = "<group>"; };
+		390F481429C09087005DBE74 /* HeaderForCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderForCollectionView.swift; sourceTree = "<group>"; };
+		390F481629C0B404005DBE74 /* TransparentTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentTabbar.swift; sourceTree = "<group>"; };
+		390F481829C0BBC3005DBE74 /* RightBarButtonItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightBarButtonItemView.swift; sourceTree = "<group>"; };
+		390F481A29C0D388005DBE74 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +177,7 @@
 			children = (
 				390F47FB29BF30D9005DBE74 /* SignInViewViewModel.swift */,
 				390F480529BF5C36005DBE74 /* LogInViewViewModel.swift */,
+				390F480F29C08019005DBE74 /* HomeViewViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -174,7 +187,7 @@
 			children = (
 				390F47F929BF3073005DBE74 /* SignInView.swift */,
 				390F480329BF5C14005DBE74 /* LogInView.swift */,
-				390F480B29BF652C005DBE74 /* HomeView.swift */,
+				390F481329C0906B005DBE74 /* Home */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -185,6 +198,7 @@
 				390F47C429BF21E8005DBE74 /* Extensions */,
 				390F47C229BF2039005DBE74 /* APICacheManager.swift */,
 				390F47FF29BF33A6005DBE74 /* CustomUIClasses.swift */,
+				390F481129C08493005DBE74 /* CreateSections.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -206,6 +220,7 @@
 				390F47F329BF2AE7005DBE74 /* CustomFonts.swift */,
 				390F47FD29BF3137005DBE74 /* AddSubviews.swift */,
 				390F480D29BF71BA005DBE74 /* ValidationExtension.swift */,
+				390F481629C0B404005DBE74 /* TransparentTabbar.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -235,6 +250,17 @@
 				390F47DD29BF2A76005DBE74 /* Montserrat-SemiBoldItalic.ttf */,
 			);
 			path = Montserrat;
+			sourceTree = "<group>";
+		};
+		390F481329C0906B005DBE74 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				390F480B29BF652C005DBE74 /* HomeView.swift */,
+				390F481429C09087005DBE74 /* HeaderForCollectionView.swift */,
+				390F481829C0BBC3005DBE74 /* RightBarButtonItemView.swift */,
+				390F481A29C0D388005DBE74 /* SearchBarView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,19 +351,25 @@
 				390F47C329BF2039005DBE74 /* APICacheManager.swift in Sources */,
 				390F47A929BF1BF6005DBE74 /* InternshipECommerceApp.xcdatamodeld in Sources */,
 				390F47BF29BF1ED1005DBE74 /* Request.swift in Sources */,
+				390F481029C08019005DBE74 /* HomeViewViewModel.swift in Sources */,
 				390F480E29BF71BA005DBE74 /* ValidationExtension.swift in Sources */,
 				390F47FE29BF3137005DBE74 /* AddSubviews.swift in Sources */,
 				390F480029BF33A6005DBE74 /* CustomUIClasses.swift in Sources */,
 				390F47BD29BF1E4F005DBE74 /* Service.swift in Sources */,
+				390F481229C08493005DBE74 /* CreateSections.swift in Sources */,
 				390F480629BF5C36005DBE74 /* LogInViewViewModel.swift in Sources */,
 				390F47FC29BF30D9005DBE74 /* SignInViewViewModel.swift in Sources */,
 				390F47F429BF2AE7005DBE74 /* CustomFonts.swift in Sources */,
 				390F47F829BF3042005DBE74 /* SignInViewController.swift in Sources */,
+				390F481929C0BBC3005DBE74 /* RightBarButtonItemView.swift in Sources */,
 				390F480829BF63EF005DBE74 /* TabBarController.swift in Sources */,
 				390F47F629BF2D75005DBE74 /* MenuItem.swift in Sources */,
 				390F480C29BF652C005DBE74 /* HomeView.swift in Sources */,
+				390F481529C09087005DBE74 /* HeaderForCollectionView.swift in Sources */,
 				390F480A29BF64DA005DBE74 /* HomeViewController.swift in Sources */,
 				390F480229BF5BC7005DBE74 /* LogInViewController.swift in Sources */,
+				390F481729C0B404005DBE74 /* TransparentTabbar.swift in Sources */,
+				390F481B29C0D388005DBE74 /* SearchBarView.swift in Sources */,
 				390F479F29BF1BF6005DBE74 /* AppDelegate.swift in Sources */,
 				390F47A129BF1BF6005DBE74 /* SceneDelegate.swift in Sources */,
 				390F47FA29BF3073005DBE74 /* SignInView.swift in Sources */,
@@ -486,6 +518,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -513,6 +546,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

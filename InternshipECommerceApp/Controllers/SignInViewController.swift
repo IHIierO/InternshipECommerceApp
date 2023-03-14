@@ -37,7 +37,7 @@ class SignInViewController: UIViewController {
 extension SignInViewController: SignInViewProtocol {
     func showTabBar() {
         let tabBar = TabBarController()
-        tabBar.modalTransitionStyle = .crossDissolve
+        tabBar.modalTransitionStyle = .coverVertical
         tabBar.modalPresentationStyle = .fullScreen
         present(tabBar, animated: true)
     }

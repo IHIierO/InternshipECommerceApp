@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         //if Auth.auth().currentUser != nil {
                     let window = UIWindow(windowScene: windowScene)
-                    window.rootViewController = UINavigationController(rootViewController: SignInViewController())
+                    window.rootViewController = TabBarController() //UINavigationController(rootViewController: SignInViewController())
                     window.makeKeyAndVisible()
                     self.window = window
 //        } else {

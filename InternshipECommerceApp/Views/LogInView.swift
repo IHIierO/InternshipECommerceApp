@@ -25,8 +25,8 @@ class LogInView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    private let firstNameTextView = DefaultUITextField(placeholderText: "First Name")
-    private let passwordTextView = DefaultUITextField(placeholderText: "Password")
+    private let firstNameTextField = DefaultUITextField(placeholderText: "First Name")
+    private let passwordTextField = DefaultUITextField(placeholderText: "Password")
     private let showPasswordButton: UIButton = {
        let button = UIButton()
         button.configuration = .borderless()
@@ -50,8 +50,8 @@ class LogInView: UIView {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .systemBackground
-        addSubviews(logInLabel, firstNameTextView, passwordTextView, showPasswordButton, logInButton)
-        passwordTextView.isSecureTextEntry = true
+        addSubviews(logInLabel, firstNameTextField, passwordTextField, showPasswordButton, logInButton)
+        passwordTextField.isSecureTextEntry = true
         logInButton.addTarget(self, action: #selector(showTabBar), for: .touchUpInside)
         setConstraints()
     }
@@ -65,12 +65,12 @@ class LogInView: UIView {
     }
     
     private func setConstraints() {
-        [logInLabel, firstNameTextView, passwordTextView, logInButton].forEach {
+        [logInLabel, firstNameTextField, passwordTextField, logInButton].forEach {
             $0.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
             $0.leftAnchor.constraint(equalTo: leftAnchor, constant: 43).isActive = true
             $0.rightAnchor.constraint(equalTo: rightAnchor, constant: -43).isActive = true
         }
-        [firstNameTextView, passwordTextView].forEach {
+        [firstNameTextField, passwordTextField].forEach {
             $0.layer.cornerRadius = 14.5
             $0.backgroundColor = UIColor(hexString: "#E8E8E8")
             $0.textColor = UIColor(hexString: "#7B7B7B")
@@ -83,16 +83,16 @@ class LogInView: UIView {
         NSLayoutConstraint.activate([
             logInLabel.topAnchor.constraint(equalTo: topAnchor, constant: 120),
             
-            firstNameTextView.topAnchor.constraint(equalTo: logInLabel.bottomAnchor, constant: 77),
+            firstNameTextField.topAnchor.constraint(equalTo: logInLabel.bottomAnchor, constant: 77),
             
-            passwordTextView.topAnchor.constraint(equalTo: firstNameTextView.bottomAnchor, constant: 35),
+            passwordTextField.topAnchor.constraint(equalTo: firstNameTextField.bottomAnchor, constant: 35),
             
-            showPasswordButton.rightAnchor.constraint(equalTo: passwordTextView.rightAnchor, constant: -7),
-            showPasswordButton.topAnchor.constraint(equalTo: passwordTextView.topAnchor),
-            showPasswordButton.heightAnchor.constraint(equalTo: passwordTextView.heightAnchor),
-            showPasswordButton.widthAnchor.constraint(equalTo: passwordTextView.heightAnchor),
+            showPasswordButton.rightAnchor.constraint(equalTo: passwordTextField.rightAnchor, constant: -7),
+            showPasswordButton.topAnchor.constraint(equalTo: passwordTextField.topAnchor),
+            showPasswordButton.heightAnchor.constraint(equalTo: passwordTextField.heightAnchor),
+            showPasswordButton.widthAnchor.constraint(equalTo: passwordTextField.heightAnchor),
             
-            logInButton.topAnchor.constraint(equalTo: passwordTextView.bottomAnchor, constant: 99),
+            logInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 99),
             
         ])
     }
