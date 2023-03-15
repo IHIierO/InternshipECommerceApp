@@ -7,9 +7,17 @@
 
 import UIKit
 
+//MARK: - HomeViewViewModelDelegate
+protocol HomeViewViewModelDelegate: AnyObject {
+    func didLoadInitialLatest()
+    //func didSelectLatest(_ latest: Latest)
+}
+
 final class HomeViewViewModel: NSObject {
     
     private var dataSource: UICollectionViewDiffableDataSource<HomeSectionKind, Int>?
+    
+    public weak var delegate: HomeViewViewModelDelegate?
     private enum HomeSectionKind: Int, CaseIterable {
         case menu, latest, flashSale, brands
         
@@ -26,6 +34,23 @@ final class HomeViewViewModel: NSObject {
             }
         }
     }
+    
+    private var latests: [Latest] = [] {
+        didSet {
+            for latest in latests {
+                let viewModel = LatestCollectionViewCellViewModel(
+                    imageUrl: URL(string: latest.image_url),
+                    categoryLabel: latest.category,
+                    nameLabel: latest.name,
+                    priceLabel: latest.price)
+                if !latestCellViewModels.contains(viewModel) {
+                    latestCellViewModels.append(viewModel)
+                }
+            }
+        }
+    }
+    
+    private var latestCellViewModels: [LatestCollectionViewCellViewModel] = []
     
     // MARK: - Create layout
     public func createLayout() -> UICollectionViewLayout {
@@ -62,7 +87,7 @@ final class HomeViewViewModel: NSObject {
     }
     private func createLatestSection() -> NSCollectionLayoutSection {
         let item = CreateSection.createItem(width: .fractionalWidth(1), height: .fractionalHeight(1), contentInsets: .init(top: 8, leading: 8, bottom: 8, trailing: 8))
-        let group = CreateSection.createGroup(alignment: .horizontal, width: .fractionalWidth(0.3), height: .fractionalWidth(0.4), item: [item])
+        let group = CreateSection.createGroup(alignment: .horizontal, width: .fractionalWidth(0.35), height: .fractionalWidth(0.45), item: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
        // section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
@@ -110,7 +135,7 @@ extension HomeViewViewModel: UICollectionViewDataSource, UICollectionViewDelegat
         case .menu:
             return menuItemCount
         case .latest:
-            return 4
+            return latestCellViewModels.count
         case .flashSale:
             return 3
         case .brands:
@@ -126,9 +151,19 @@ extension HomeViewViewModel: UICollectionViewDataSource, UICollectionViewDelegat
         let sections = HomeSectionKind(rawValue: indexPath.section)
         switch sections {
         case .menu:
-            return cell
+            guard let menuItemCell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuItemCollectionViewCell.reuseId, for: indexPath) as? MenuItemCollectionViewCell else {
+                return cell
+            }
+            let model = MenuItem.allCases
+            menuItemCell.configure(with: model[indexPath.row])
+            return menuItemCell
         case .latest:
-            return cell
+            guard let latestCell = collectionView.dequeueReusableCell(withReuseIdentifier: LatestCollectionViewCell.reuseId, for: indexPath) as? LatestCollectionViewCell else {
+                return cell
+            }
+            let viewModels = latestCellViewModels
+            latestCell.configure(with: viewModels[indexPath.row])
+            return latestCell
         case .flashSale:
             return cell
         case .brands:
@@ -158,4 +193,24 @@ extension HomeViewViewModel: UICollectionViewDataSource, UICollectionViewDelegat
         }
     }
     
+}
+
+// MARK: - Creat LatestCell
+
+extension HomeViewViewModel {
+    public func fetchLatest() {
+        Service.shared.execute(.latestRequest, expexting: GetAllLatests.self) {
+            [weak self] results in
+            switch results {
+            case .success(let responseModel):
+                let results = responseModel.latest
+                self?.latests = results
+                DispatchQueue.main.async {
+                    self?.delegate?.didLoadInitialLatest()
+                }
+            case .failure(let error):
+                print(String(describing: error))
+            }
+        }
+    }
 }

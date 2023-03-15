@@ -25,8 +25,8 @@ class LogInView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    private let firstNameTextField = DefaultUITextField(placeholderText: "First Name")
-    private let passwordTextField = DefaultUITextField(placeholderText: "Password")
+    private let firstNameTextField = DefaultUITextField(placeholderText: "First Name", placeholderTextColor: UIColor(hexString: "#7B7B7B"))
+    private let passwordTextField = DefaultUITextField(placeholderText: "Password", placeholderTextColor: UIColor(hexString: "#7B7B7B"))
     private let showPasswordButton: UIButton = {
        let button = UIButton()
         button.configuration = .borderless()

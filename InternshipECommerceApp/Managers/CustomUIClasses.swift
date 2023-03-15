@@ -35,4 +35,46 @@ class DefaultUITextField: UITextField {
         fatalError("init(coder:) has not been implemented")
     }
 }
+//MARK: - DefaultUILabel
+class DefaultUILabel: UILabel {
+    
+    let inputText: String
+    let fontSize: CGFloat
+    let alingment: NSTextAlignment
+    let customFont: String
+    let colorForText: UIColor
+    var edgeInset: UIEdgeInsets = .zero
+    
+    init(inputText: String, customFont: String = "", fontSize: CGFloat = UIFont.systemFontSize, colorForText: UIColor = .label, alingment: NSTextAlignment){
+        self.inputText = inputText
+        self.fontSize = fontSize
+        self.alingment = alingment
+        self.customFont = customFont
+        self.colorForText = colorForText
+        super.init(frame: .zero)
+        self.text = inputText
+        self.textAlignment = alingment
+        self.textColor = colorForText
+        if customFont != "" {
+            self.font = UIFont(name: customFont, size: fontSize)
+        } else {
+            self.font = .systemFont(ofSize: fontSize)
+        }
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func drawText(in rect: CGRect) {
+        let insets = UIEdgeInsets.init(top: edgeInset.top, left: edgeInset.left, bottom: edgeInset.bottom, right: edgeInset.right)
+        super.drawText(in: rect.inset(by: insets))
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        let size = super.intrinsicContentSize
+        return CGSize(width: size.width + edgeInset.left + edgeInset.right, height: size.height + edgeInset.top + edgeInset.bottom)
+    }
+}
 

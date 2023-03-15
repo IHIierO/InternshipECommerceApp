@@ -40,7 +40,7 @@ enum MenuItem: CaseIterable {
         case .phones:
             return "menuItemPhones"
         case .headPhones:
-            return "menuItemHeadPhones"
+            return "menuItemHeadphones"
         case .kids:
             return "menuItemKids"
         case .furniture:

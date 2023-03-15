@@ -26,9 +26,9 @@ class SignInView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    private let firstNameTextView = DefaultUITextField(placeholderText: "First Name")
-    private let lastNameTextView = DefaultUITextField(placeholderText: "Last Name")
-    private let emailTextView = DefaultUITextField(placeholderText: "Email")
+    private let firstNameTextView = DefaultUITextField(placeholderText: "First Name", placeholderTextColor: UIColor(hexString: "#7B7B7B"))
+    private let lastNameTextView = DefaultUITextField(placeholderText: "Last Name", placeholderTextColor: UIColor(hexString: "#7B7B7B"))
+    private let emailTextView = DefaultUITextField(placeholderText: "Email", placeholderTextColor: UIColor(hexString: "#7B7B7B"))
     private let signInButton: UIButton = {
        let button = UIButton()
         button.configuration = .filled()
