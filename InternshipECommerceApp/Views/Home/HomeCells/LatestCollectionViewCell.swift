@@ -24,7 +24,7 @@ final class LatestCollectionViewCell: UICollectionViewCell {
     private let addToCartButton: UIButton = {
        let button = UIButton()
         button.configuration = .borderless()
-        button.configuration?.image = UIImage(named: "addToCart")
+        button.configuration?.image = UIImage(named: "addToCart20x20")
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

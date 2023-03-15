@@ -16,6 +16,7 @@ class HomeView: UIView {
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.register(MenuItemCollectionViewCell.self, forCellWithReuseIdentifier: MenuItemCollectionViewCell.reuseId)
         collectionView.register(LatestCollectionViewCell.self, forCellWithReuseIdentifier: LatestCollectionViewCell.reuseId)
+        collectionView.register(FlashSaleCollectionViewCell.self, forCellWithReuseIdentifier: FlashSaleCollectionViewCell.reuseId)
         collectionView.register(HeaderForCollectionView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderForCollectionView.reuseId)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.dataSource = viewModel
@@ -32,6 +33,7 @@ class HomeView: UIView {
         setConstrains()
         viewModel.delegate = self
         viewModel.fetchLatest()
+        viewModel.fetchFlashSale()
     }
     
     required init?(coder: NSCoder) {

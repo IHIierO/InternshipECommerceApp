@@ -54,6 +54,9 @@
 		390F482329C1D47C005DBE74 /* LatestCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F482229C1D47C005DBE74 /* LatestCollectionViewCellViewModel.swift */; };
 		390F482529C1D695005DBE74 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F482429C1D695005DBE74 /* ImageLoader.swift */; };
 		390F482729C1DA1B005DBE74 /* Latest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F482629C1DA1B005DBE74 /* Latest.swift */; };
+		390F482929C1F6DB005DBE74 /* FlashSaleCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F482829C1F6DB005DBE74 /* FlashSaleCollectionViewCellViewModel.swift */; };
+		390F482B29C1F70F005DBE74 /* FlashSaleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F482A29C1F70F005DBE74 /* FlashSaleCollectionViewCell.swift */; };
+		390F482D29C1F856005DBE74 /* FlashSale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F482C29C1F856005DBE74 /* FlashSale.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +109,9 @@
 		390F482229C1D47C005DBE74 /* LatestCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		390F482429C1D695005DBE74 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		390F482629C1DA1B005DBE74 /* Latest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Latest.swift; sourceTree = "<group>"; };
+		390F482829C1F6DB005DBE74 /* FlashSaleCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashSaleCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		390F482A29C1F70F005DBE74 /* FlashSaleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashSaleCollectionViewCell.swift; sourceTree = "<group>"; };
+		390F482C29C1F856005DBE74 /* FlashSale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashSale.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +185,7 @@
 			children = (
 				390F47F529BF2D75005DBE74 /* MenuItem.swift */,
 				390F482629C1DA1B005DBE74 /* Latest.swift */,
+				390F482C29C1F856005DBE74 /* FlashSale.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -278,9 +285,10 @@
 		390F481C29C1C04B005DBE74 /* HomeCells */ = {
 			isa = PBXGroup;
 			children = (
+				390F481429C09087005DBE74 /* HeaderForCollectionView.swift */,
 				390F481D29C1C06E005DBE74 /* MenuItemCollectionViewCell.swift */,
 				390F481F29C1CBDB005DBE74 /* LatestCollectionViewCell.swift */,
-				390F481429C09087005DBE74 /* HeaderForCollectionView.swift */,
+				390F482A29C1F70F005DBE74 /* FlashSaleCollectionViewCell.swift */,
 			);
 			path = HomeCells;
 			sourceTree = "<group>";
@@ -290,6 +298,7 @@
 			children = (
 				390F480F29C08019005DBE74 /* HomeViewViewModel.swift */,
 				390F482229C1D47C005DBE74 /* LatestCollectionViewCellViewModel.swift */,
+				390F482829C1F6DB005DBE74 /* FlashSaleCollectionViewCellViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -377,6 +386,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				390F47C129BF1F9F005DBE74 /* Endpoint.swift in Sources */,
+				390F482929C1F6DB005DBE74 /* FlashSaleCollectionViewCellViewModel.swift in Sources */,
+				390F482B29C1F70F005DBE74 /* FlashSaleCollectionViewCell.swift in Sources */,
 				390F480429BF5C14005DBE74 /* LogInView.swift in Sources */,
 				390F481E29C1C06E005DBE74 /* MenuItemCollectionViewCell.swift in Sources */,
 				390F47C629BF21F7005DBE74 /* ColorHex.swift in Sources */,
@@ -403,6 +414,7 @@
 				390F481529C09087005DBE74 /* HeaderForCollectionView.swift in Sources */,
 				390F480A29BF64DA005DBE74 /* HomeViewController.swift in Sources */,
 				390F480229BF5BC7005DBE74 /* LogInViewController.swift in Sources */,
+				390F482D29C1F856005DBE74 /* FlashSale.swift in Sources */,
 				390F481729C0B404005DBE74 /* TransparentTabbar.swift in Sources */,
 				390F481B29C0D388005DBE74 /* SearchBarView.swift in Sources */,
 				390F479F29BF1BF6005DBE74 /* AppDelegate.swift in Sources */,

@@ -51,6 +51,23 @@ final class HomeViewViewModel: NSObject {
     }
     
     private var latestCellViewModels: [LatestCollectionViewCellViewModel] = []
+    private var flashSales: [FlashSale] = [] {
+        didSet {
+            for flashSale in flashSales {
+                let viewModel = FlashSaleCollectionViewCellViewModel(
+                    imageUrl: URL(string: flashSale.image_url),
+                    categoryLabel: flashSale.category,
+                    nameLabel: flashSale.name,
+                    discountLabel: flashSale.discount,
+                    priceLabel: flashSale.price)
+                if !flashSaleCellViewModels.contains(viewModel) {
+                    flashSaleCellViewModels.append(viewModel)
+                }
+            }
+        }
+    }
+    
+    private var flashSaleCellViewModels: [FlashSaleCollectionViewCellViewModel] = []
     
     // MARK: - Create layout
     public func createLayout() -> UICollectionViewLayout {
@@ -82,15 +99,14 @@ final class HomeViewViewModel: NSObject {
         let group = CreateSection.createGroup(alignment: .horizontal, width: .fractionalWidth(0.18), height: .fractionalWidth(0.2), item: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
-        //section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
         return section
     }
     private func createLatestSection() -> NSCollectionLayoutSection {
         let item = CreateSection.createItem(width: .fractionalWidth(1), height: .fractionalHeight(1), contentInsets: .init(top: 8, leading: 8, bottom: 8, trailing: 8))
-        let group = CreateSection.createGroup(alignment: .horizontal, width: .fractionalWidth(0.35), height: .fractionalWidth(0.45), item: [item])
+        let group = CreateSection.createGroup(alignment: .horizontal, width: .fractionalWidth(0.35), height: .fractionalWidth(0.42), item: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
-       // section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0)
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(32))
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
         section.boundarySupplementaryItems = [header]
@@ -98,10 +114,10 @@ final class HomeViewViewModel: NSObject {
     }
     private func createFlashSaleSection() -> NSCollectionLayoutSection {
         let item = CreateSection.createItem(width: .fractionalWidth(1), height: .fractionalHeight(1), contentInsets: .init(top: 8, leading: 8, bottom: 8, trailing: 8))
-        let group = CreateSection.createGroup(alignment: .horizontal, width: .fractionalWidth(0.46), height: .fractionalWidth(0.58), item: [item])
+        let group = CreateSection.createGroup(alignment: .horizontal, width: .fractionalWidth(0.49), height: .fractionalWidth(0.63), item: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
-        //section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0)
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(32))
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
         section.boundarySupplementaryItems = [header]
@@ -112,7 +128,7 @@ final class HomeViewViewModel: NSObject {
         let group = CreateSection.createGroup(alignment: .horizontal, width: .fractionalWidth(0.3), height: .fractionalWidth(0.4), item: [item])
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPaging
-       // section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0)
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(32))
         let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
         section.boundarySupplementaryItems = [header]
@@ -137,7 +153,7 @@ extension HomeViewViewModel: UICollectionViewDataSource, UICollectionViewDelegat
         case .latest:
             return latestCellViewModels.count
         case .flashSale:
-            return 3
+            return flashSaleCellViewModels.count
         case .brands:
             return 4
         case .none:
@@ -165,7 +181,12 @@ extension HomeViewViewModel: UICollectionViewDataSource, UICollectionViewDelegat
             latestCell.configure(with: viewModels[indexPath.row])
             return latestCell
         case .flashSale:
-            return cell
+            guard let flashSaleCell = collectionView.dequeueReusableCell(withReuseIdentifier: FlashSaleCollectionViewCell.reuseId, for: indexPath) as? FlashSaleCollectionViewCell else {
+                return cell
+            }
+            let viewModels = flashSaleCellViewModels
+            flashSaleCell.configure(with: viewModels[indexPath.row])
+            return flashSaleCell
         case .brands:
             return cell
         case .none:
@@ -196,7 +217,6 @@ extension HomeViewViewModel: UICollectionViewDataSource, UICollectionViewDelegat
 }
 
 // MARK: - Creat LatestCell
-
 extension HomeViewViewModel {
     public func fetchLatest() {
         Service.shared.execute(.latestRequest, expexting: GetAllLatests.self) {
@@ -205,6 +225,21 @@ extension HomeViewViewModel {
             case .success(let responseModel):
                 let results = responseModel.latest
                 self?.latests = results
+                DispatchQueue.main.async {
+                    self?.delegate?.didLoadInitialLatest()
+                }
+            case .failure(let error):
+                print(String(describing: error))
+            }
+        }
+    }
+    public func fetchFlashSale() {
+        Service.shared.execute(.flashSaleRequest, expexting: GetAllLFlashSale.self) {
+            [weak self] results in
+            switch results {
+            case .success(let responseModel):
+                let results = responseModel.flash_sale
+                self?.flashSales = results
                 DispatchQueue.main.async {
                     self?.delegate?.didLoadInitialLatest()
                 }

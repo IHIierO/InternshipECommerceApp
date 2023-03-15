@@ -37,6 +37,7 @@ final class SearchBarView: UIView {
         searchTextField.textColor = UIColor(hexString: "#5B5B5B")
         searchTextField.textAlignment = .center
         searchTextField.font = UIFont(name: CustomFonts.montserratRegular, size: 12)
+        searchTextField.isEnabled = false
     }
     
     private func setConstraints() {
