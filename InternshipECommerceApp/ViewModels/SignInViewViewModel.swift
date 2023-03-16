@@ -6,24 +6,57 @@
 //
 
 import UIKit
+import Combine
+
+enum SignInStates {
+    case loading
+    case success
+    case failed
+    case none
+}
 
 final class SignInViewViewModel {
-    init() {
-        
+    @Published var email = ""
+    @Published var firstName = ""
+    @Published var lastName = ""
+    @Published var state: SignInStates = .none
+    
+    private var isValidEmailPublisher: AnyPublisher<Bool, Never> {
+        $email
+            .map {$0.isEmail}
+            .eraseToAnyPublisher()
+    }
+    private var isValidFirstNamePublisher: AnyPublisher<Bool, Never> {
+        $firstName
+            .map {!$0.isBlank}
+            .eraseToAnyPublisher()
+    }
+    private var isValidLastNamePublisher: AnyPublisher<Bool, Never> {
+        $lastName
+            .map {!$0.isBlank}
+            .eraseToAnyPublisher()
+    }
+    public var isSignInEnabled: AnyPublisher<Bool, Never> {
+        Publishers.CombineLatest3(isValidEmailPublisher, isValidFirstNamePublisher, isValidLastNamePublisher)
+            .map {$0 && $1 && $2}
+            .eraseToAnyPublisher()
     }
     
-    func checkValidate(for email: UITextField) -> Bool {
-        
-        guard let emailString = email.text else {
-            return false
+    public func submitSignIn() {
+        state = .loading
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) { [weak self] in
+            guard let strongSelf = self else {
+                return
+            }
+            if strongSelf.isCorrectEmail(){
+                strongSelf.state = .success
+            } else {
+                strongSelf.state = .failed
+            }
         }
-        
-        if emailString.isEmail {
-            print("Is validate")
-            return true
-        } else {
-            print("Is't validate")
-            return false
-        }
+    }
+    
+    private func isCorrectEmail() -> Bool {
+        return email.isEmail
     }
 }

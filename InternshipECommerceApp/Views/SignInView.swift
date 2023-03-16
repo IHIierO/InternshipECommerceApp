@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 protocol SignInViewProtocol: AnyObject {
     func showLoginPage()
@@ -15,6 +16,7 @@ protocol SignInViewProtocol: AnyObject {
 class SignInView: UIView {
     
     private let viewModel = SignInViewViewModel()
+    private var cancellables = Set<AnyCancellable>()
     
     public weak var delegate: SignInViewProtocol?
     
@@ -26,9 +28,9 @@ class SignInView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    private let firstNameTextView = DefaultUITextField(placeholderText: "First Name", placeholderTextColor: UIColor(hexString: "#7B7B7B"))
-    private let lastNameTextView = DefaultUITextField(placeholderText: "Last Name", placeholderTextColor: UIColor(hexString: "#7B7B7B"))
-    private let emailTextView = DefaultUITextField(placeholderText: "Email", placeholderTextColor: UIColor(hexString: "#7B7B7B"))
+    private let firstNameTextField = DefaultUITextField(placeholderText: "First Name", placeholderTextColor: UIColor(hexString: "#7B7B7B"))
+    private let lastNameTextField = DefaultUITextField(placeholderText: "Last Name", placeholderTextColor: UIColor(hexString: "#7B7B7B"))
+    private let emailTextField = DefaultUITextField(placeholderText: "Email", placeholderTextColor: UIColor(hexString: "#7B7B7B"))
     private let signInButton: UIButton = {
        let button = UIButton()
         button.configuration = .filled()
@@ -39,6 +41,7 @@ class SignInView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    private let validateLabel = DefaultUILabel(inputText: "", alingment: .center)
     private let loginLabel: UILabel = {
        let label = UILabel()
         label.text = "Already have an account?"
@@ -95,12 +98,14 @@ class SignInView: UIView {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .systemBackground
-        addSubviews(signInLabel, firstNameTextView, lastNameTextView, emailTextView, signInButton, loginLabel, loginButton, signInWithGoogleButton, signInWithAppleButton)
+        addSubviews(signInLabel, firstNameTextField, lastNameTextField, emailTextField, signInButton, validateLabel, loginLabel, loginButton, signInWithGoogleButton, signInWithAppleButton)
         setConstraints()
+        initialState()
         loginButton.addTarget(self, action: #selector(showLoginPage), for: .touchUpInside)
         signInButton.addTarget(self, action: #selector(showTabBar), for: .touchUpInside)
         signInWithGoogleButton.addTarget(self, action: #selector(showTabBar), for: .touchUpInside)
         signInWithAppleButton.addTarget(self, action: #selector(showTabBar), for: .touchUpInside)
+        bindViewModel()
     }
     
     required init?(coder: NSCoder) {
@@ -112,28 +117,100 @@ class SignInView: UIView {
     }
     
     @objc func showTabBar(sender: UIButton) {
-        if sender == signInWithGoogleButton || sender == signInWithAppleButton {
-            delegate?.showTabBar()
-        }
-        if viewModel.checkValidate(for: emailTextView) {
-            delegate?.showTabBar()
-        } else {
-            print("Incorrect email")
-        }
+        viewModel.submitSignIn()
     }
     
-    private func setConstraints() {
-        [signInLabel, firstNameTextView, lastNameTextView, emailTextView, signInButton,   signInWithGoogleButton, signInWithAppleButton].forEach {
-            $0.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-            $0.leftAnchor.constraint(equalTo: leftAnchor, constant: 43).isActive = true
-            $0.rightAnchor.constraint(equalTo: rightAnchor, constant: -43).isActive = true
-        }
-        [firstNameTextView, lastNameTextView, emailTextView].forEach {
-            $0.layer.cornerRadius = 14.5
+    private func initialState() {
+        [firstNameTextField, lastNameTextField, emailTextField].forEach {
             $0.backgroundColor = UIColor(hexString: "#E8E8E8")
             $0.textColor = UIColor(hexString: "#7B7B7B")
             $0.textAlignment = .center
             $0.font = UIFont(name: CustomFonts.montserratRegular, size: 14)
+        }
+        validateLabel.isHidden = true
+        signInButton.isEnabled = false
+    }
+    
+    private func bindViewModel() {
+        NotificationCenter.default
+            .publisher(for: UITextField.textDidChangeNotification, object: firstNameTextField)
+            .map {
+                guard let field = $0.object as? UITextField else {
+                    return ""
+                }
+                guard let text = field.text else {
+                    return ""
+                }
+                return text
+            }
+            .assign(to: \.firstName, on: viewModel)
+            .store(in: &cancellables)
+        NotificationCenter.default
+            .publisher(for: UITextField.textDidChangeNotification, object: lastNameTextField)
+            .map {
+                guard let field = $0.object as? UITextField else {
+                    return ""
+                }
+                guard let text = field.text else {
+                    return ""
+                }
+                return text
+            }
+            .assign(to: \.lastName, on: viewModel)
+            .store(in: &cancellables)
+        NotificationCenter.default
+            .publisher(for: UITextField.textDidChangeNotification, object: emailTextField)
+            .map {
+                guard let field = $0.object as? UITextField else {
+                    return ""
+                }
+                guard let text = field.text else {
+                    return ""
+                }
+                return text
+            }
+            .assign(to: \.email, on: viewModel)
+            .store(in: &cancellables)
+        
+        viewModel.isSignInEnabled
+            .assign(to: \.isEnabled, on: signInButton)
+            .store(in: &cancellables)
+        
+        viewModel.$state
+            .sink { [weak self] state in
+                switch state {
+                case .loading:
+                    self?.validateLabel.isHidden = true
+                    self?.signInButton.configurationUpdateHandler = { signInButton in
+                        self?.signInButton.isEnabled = false
+                        self?.signInButton.configuration?.showsActivityIndicator = true
+                        self?.signInButton.configuration?.title = "Signing In..."
+                    }
+                case .success:
+                    self?.delegate?.showTabBar()
+                case . failed:
+                    self?.validateLabel.isHidden = false
+                    self?.validateLabel.text = "Invalid Email"
+                    self?.signInButton.configurationUpdateHandler = { signInButton in
+                        self?.signInButton.isEnabled = false
+                        self?.signInButton.configuration?.showsActivityIndicator = false
+                        self?.signInButton.configuration?.title = "Sign in"
+                    }
+                case .none:
+                    break
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func setConstraints() {
+        [signInLabel, firstNameTextField, lastNameTextField, emailTextField, signInButton, validateLabel,   signInWithGoogleButton, signInWithAppleButton].forEach {
+            $0.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+            $0.leftAnchor.constraint(equalTo: leftAnchor, constant: 43).isActive = true
+            $0.rightAnchor.constraint(equalTo: rightAnchor, constant: -43).isActive = true
+        }
+        [firstNameTextField, lastNameTextField, emailTextField].forEach {
+            $0.layer.cornerRadius = 14.5
             $0.heightAnchor.constraint(equalToConstant: 29).isActive = true
         }
         signInButton.heightAnchor.constraint(equalToConstant: 46).isActive = true
@@ -141,13 +218,13 @@ class SignInView: UIView {
         NSLayoutConstraint.activate([
             signInLabel.topAnchor.constraint(equalTo: topAnchor, constant: 120),
             
-            firstNameTextView.topAnchor.constraint(equalTo: signInLabel.bottomAnchor, constant: 77),
+            firstNameTextField.topAnchor.constraint(equalTo: signInLabel.bottomAnchor, constant: 77),
             
-            lastNameTextView.topAnchor.constraint(equalTo: firstNameTextView.bottomAnchor, constant: 35),
+            lastNameTextField.topAnchor.constraint(equalTo: firstNameTextField.bottomAnchor, constant: 35),
             
-            emailTextView.topAnchor.constraint(equalTo: lastNameTextView.bottomAnchor, constant: 35),
+            emailTextField.topAnchor.constraint(equalTo: lastNameTextField.bottomAnchor, constant: 35),
             
-            signInButton.topAnchor.constraint(equalTo: emailTextView.bottomAnchor, constant: 35),
+            signInButton.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 35),
             
             loginLabel.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 17),
             loginLabel.leftAnchor.constraint(equalTo: signInButton.leftAnchor),
@@ -157,7 +234,9 @@ class SignInView: UIView {
             loginButton.heightAnchor.constraint(equalTo: loginLabel.heightAnchor),
             loginButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            signInWithGoogleButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 83),
+            validateLabel.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 13),
+            
+            signInWithGoogleButton.topAnchor.constraint(equalTo: validateLabel.bottomAnchor, constant: 70),
             
             signInWithAppleButton.topAnchor.constraint(equalTo: signInWithGoogleButton.bottomAnchor, constant: 48),
         ])
