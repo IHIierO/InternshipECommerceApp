@@ -216,17 +216,19 @@ extension HomeViewViewModel: UICollectionViewDataSource, UICollectionViewDelegat
     
 }
 
-// MARK: - Creat LatestCell
+// MARK: - Fetch Data
 extension HomeViewViewModel {
     public func fetchLatest() {
         Service.shared.execute(.latestRequest, expexting: GetAllLatests.self) {
             [weak self] results in
             switch results {
             case .success(let responseModel):
-                let results = responseModel.latest
-                self?.latests = results
-                DispatchQueue.main.async {
-                    self?.delegate?.didLoadInitialLatest()
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)){
+                    let results = responseModel.latest
+                    self?.latests = results
+                    DispatchQueue.main.async {
+                        self?.delegate?.didLoadInitialLatest()
+                    }
                 }
             case .failure(let error):
                 print(String(describing: error))
@@ -238,10 +240,12 @@ extension HomeViewViewModel {
             [weak self] results in
             switch results {
             case .success(let responseModel):
-                let results = responseModel.flash_sale
-                self?.flashSales = results
-                DispatchQueue.main.async {
-                    self?.delegate?.didLoadInitialLatest()
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)){
+                    let results = responseModel.flash_sale
+                    self?.flashSales = results
+                    DispatchQueue.main.async {
+                        self?.delegate?.didLoadInitialLatest()
+                    }
                 }
             case .failure(let error):
                 print(String(describing: error))

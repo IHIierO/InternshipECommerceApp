@@ -63,6 +63,10 @@ class HomeViewController: UIViewController {
         navigationController?.navigationBar.topItem?.titleView = title
         let leftItem = UIBarButtonItem(image: UIImage(named: "leftNavMenu")?.withRenderingMode(.alwaysOriginal), style: .done, target: self, action: #selector(openMenu))
         navigationItem.leftBarButtonItem = leftItem
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        navigationController?.navigationBar.standardAppearance = appearance
     }
     
     @objc private func openMenu() {

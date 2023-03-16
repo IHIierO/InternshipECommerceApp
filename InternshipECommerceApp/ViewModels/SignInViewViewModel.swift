@@ -49,6 +49,7 @@ final class SignInViewViewModel {
                 return
             }
             if strongSelf.isCorrectEmail(){
+                print("\(strongSelf.isCorrectEmail())")
                 strongSelf.state = .success
             } else {
                 strongSelf.state = .failed
@@ -57,6 +58,6 @@ final class SignInViewViewModel {
     }
     
     private func isCorrectEmail() -> Bool {
-        return email.isEmail
+       return email != "test@mail.ru" 
     }
 }

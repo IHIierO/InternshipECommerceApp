@@ -117,7 +117,11 @@ class SignInView: UIView {
     }
     
     @objc func showTabBar(sender: UIButton) {
-        viewModel.submitSignIn()
+        if sender == signInButton {
+            viewModel.submitSignIn()
+        } else {
+            delegate?.showTabBar()
+        }
     }
     
     private func initialState() {
@@ -167,7 +171,7 @@ class SignInView: UIView {
                 guard let text = field.text else {
                     return ""
                 }
-                return text
+                return text.lowercased()
             }
             .assign(to: \.email, on: viewModel)
             .store(in: &cancellables)
@@ -190,9 +194,9 @@ class SignInView: UIView {
                     self?.delegate?.showTabBar()
                 case . failed:
                     self?.validateLabel.isHidden = false
-                    self?.validateLabel.text = "Invalid Email"
+                    self?.validateLabel.text = "Email already exists"
+                    self?.validateLabel.textColor = .red
                     self?.signInButton.configurationUpdateHandler = { signInButton in
-                        self?.signInButton.isEnabled = false
                         self?.signInButton.configuration?.showsActivityIndicator = false
                         self?.signInButton.configuration?.title = "Sign in"
                     }
