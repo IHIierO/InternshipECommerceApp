@@ -32,8 +32,7 @@ class HomeView: UIView {
         addSubview(collectionView)
         setConstrains()
         viewModel.delegate = self
-        viewModel.fetchLatest()
-        viewModel.fetchFlashSale()
+        viewModel.fetchAllData()
     }
     
     required init?(coder: NSCoder) {
@@ -52,7 +51,7 @@ class HomeView: UIView {
 
 
 extension HomeView: HomeViewViewModelDelegate {
-    func didLoadInitialLatest() {
+    func didLoadInitialData() {
         collectionView.reloadData()
     }
 }

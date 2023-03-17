@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import Combine
 
 //MARK: - HomeViewViewModelDelegate
 protocol HomeViewViewModelDelegate: AnyObject {
-    func didLoadInitialLatest()
+    func didLoadInitialData()
     //func didSelectLatest(_ latest: Latest)
 }
 
@@ -68,6 +69,9 @@ final class HomeViewViewModel: NSObject {
     }
     
     private var flashSaleCellViewModels: [FlashSaleCollectionViewCellViewModel] = []
+    
+    private let dataManagerViewModel = DataManagerViewModel()
+    private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Create layout
     public func createLayout() -> UICollectionViewLayout {
@@ -218,7 +222,7 @@ extension HomeViewViewModel: UICollectionViewDataSource, UICollectionViewDelegat
 
 // MARK: - Fetch Data
 extension HomeViewViewModel {
-    public func fetchLatest() {
+    private func fetchLatest() {
         Service.shared.execute(.latestRequest, expexting: GetAllLatests.self) {
             [weak self] results in
             switch results {
@@ -226,30 +230,40 @@ extension HomeViewViewModel {
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)){
                     let results = responseModel.latest
                     self?.latests = results
-                    DispatchQueue.main.async {
-                        self?.delegate?.didLoadInitialLatest()
-                    }
+                    self?.dataManagerViewModel.updatePublishers(for: .latest)
                 }
             case .failure(let error):
                 print(String(describing: error))
             }
         }
     }
-    public func fetchFlashSale() {
+    private func fetchFlashSale() {
         Service.shared.execute(.flashSaleRequest, expexting: GetAllLFlashSale.self) {
             [weak self] results in
             switch results {
             case .success(let responseModel):
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)){
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4)){
                     let results = responseModel.flash_sale
                     self?.flashSales = results
-                    DispatchQueue.main.async {
-                        self?.delegate?.didLoadInitialLatest()
-                    }
+                    self?.dataManagerViewModel.updatePublishers(for: .flashSale)
                 }
             case .failure(let error):
                 print(String(describing: error))
             }
+        }
+    }
+    
+    public func fetchAllData() {
+        fetchLatest()
+        fetchFlashSale()
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else {return}
+            strongSelf.dataManagerViewModel.allDataEnabled
+                .contains(true)
+                .sink { _ in
+                    self?.delegate?.didLoadInitialData()
+                }
+                .store(in: &strongSelf.cancellables)
         }
     }
 }
