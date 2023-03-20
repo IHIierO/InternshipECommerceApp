@@ -77,4 +77,16 @@ class DefaultUILabel: UILabel {
         return CGSize(width: size.width + edgeInset.left + edgeInset.right, height: size.height + edgeInset.top + edgeInset.bottom)
     }
 }
-
+//MARK: - BackButton
+class BackButton {
+    var vc: UIViewController
+    
+    func createBackButton(){
+        let backButton = UIBarButtonItem()
+        backButton.tintColor = .black
+        vc.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+    }
+   init(to vc: UIViewController){
+        self.vc = vc
+    }
+}

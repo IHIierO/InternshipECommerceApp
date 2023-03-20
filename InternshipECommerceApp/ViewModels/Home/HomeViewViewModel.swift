@@ -150,7 +150,7 @@ extension HomeViewViewModel: UICollectionViewDataSource, UICollectionViewDelegat
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let sections = HomeSectionKind(rawValue: section)
-        let menuItemCount = MenuItem.allCases.count
+        let menuItemCount = MenuItems.allCases.count
         switch sections {
         case .menu:
             return menuItemCount
@@ -174,7 +174,7 @@ extension HomeViewViewModel: UICollectionViewDataSource, UICollectionViewDelegat
             guard let menuItemCell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuItemCollectionViewCell.reuseId, for: indexPath) as? MenuItemCollectionViewCell else {
                 return cell
             }
-            let model = MenuItem.allCases
+            let model = MenuItems.allCases
             menuItemCell.configure(with: model[indexPath.row])
             return menuItemCell
         case .latest:

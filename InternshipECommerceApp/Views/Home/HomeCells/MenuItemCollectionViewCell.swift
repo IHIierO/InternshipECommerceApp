@@ -46,7 +46,7 @@ final class MenuItemCollectionViewCell: UICollectionViewCell {
         menuItemLabel.text = nil
     }
     
-    func configure(with model: MenuItem) {
+    public func configure(with model: MenuItems) {
         menuItemImageView.image = UIImage(named: model.image)
         menuItemLabel.text = model.name
     }

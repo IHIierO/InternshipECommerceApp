@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum MenuItem: CaseIterable {
+enum MenuItems: CaseIterable {
     case cars
     case games
     case phones

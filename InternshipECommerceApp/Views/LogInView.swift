@@ -56,6 +56,7 @@ class LogInView: UIView {
         addSubviews(logInLabel, firstNameTextField, passwordTextField, showPasswordButton, logInButton, validateLabel)
         passwordTextField.isSecureTextEntry = true
         logInButton.addTarget(self, action: #selector(showTabBar), for: .touchUpInside)
+        showPasswordButton.addTarget(self, action: #selector(showPassword), for: .touchUpInside)
         setConstraints()
         initialState()
         bindViewModel()
@@ -65,8 +66,12 @@ class LogInView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc func showTabBar() {
+    @objc private func showTabBar() {
         viewModel.submitLogIn()
+    }
+    
+    @objc private func showPassword() {
+        passwordTextField.isSecureTextEntry.toggle()
     }
     
     private func initialState() {

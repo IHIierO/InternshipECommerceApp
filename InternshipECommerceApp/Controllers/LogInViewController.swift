@@ -21,6 +21,7 @@ class LogInViewController: UIViewController {
         view.backgroundColor = .systemBackground
         view.addSubview(logInView)
         logInView.delegate = self
+        BackButton(to: self).createBackButton()
     }
     
     private func setConstraints() {
