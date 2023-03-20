@@ -16,7 +16,7 @@
 		390F47BF29BF1ED1005DBE74 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F47BE29BF1ED1005DBE74 /* Request.swift */; };
 		390F47C129BF1F9F005DBE74 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F47C029BF1F9F005DBE74 /* Endpoint.swift */; };
 		390F47C329BF2039005DBE74 /* APICacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F47C229BF2039005DBE74 /* APICacheManager.swift */; };
-		390F47C629BF21F7005DBE74 /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F47C529BF21F7005DBE74 /* ColorHex.swift */; };
+		390F47C629BF21F7005DBE74 /* UIColor+colorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F47C529BF21F7005DBE74 /* UIColor+colorHex.swift */; };
 		390F47DF29BF2A76005DBE74 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 390F47CD29BF2A75005DBE74 /* Montserrat-BlackItalic.ttf */; };
 		390F47E029BF2A76005DBE74 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 390F47CE29BF2A75005DBE74 /* Montserrat-Bold.ttf */; };
 		390F47E229BF2A76005DBE74 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 390F47D029BF2A75005DBE74 /* Montserrat-SemiBold.ttf */; };
@@ -34,7 +34,7 @@
 		390F47F829BF3042005DBE74 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F47F729BF3042005DBE74 /* SignInViewController.swift */; };
 		390F47FA29BF3073005DBE74 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F47F929BF3073005DBE74 /* SignInView.swift */; };
 		390F47FC29BF30D9005DBE74 /* SignInViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F47FB29BF30D9005DBE74 /* SignInViewViewModel.swift */; };
-		390F47FE29BF3137005DBE74 /* AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F47FD29BF3137005DBE74 /* AddSubviews.swift */; };
+		390F47FE29BF3137005DBE74 /* UIView+addSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F47FD29BF3137005DBE74 /* UIView+addSubviews.swift */; };
 		390F480029BF33A6005DBE74 /* CustomUIClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F47FF29BF33A6005DBE74 /* CustomUIClasses.swift */; };
 		390F480229BF5BC7005DBE74 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F480129BF5BC7005DBE74 /* LogInViewController.swift */; };
 		390F480429BF5C14005DBE74 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F480329BF5C14005DBE74 /* LogInView.swift */; };
@@ -42,11 +42,11 @@
 		390F480829BF63EF005DBE74 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F480729BF63EF005DBE74 /* TabBarController.swift */; };
 		390F480A29BF64DA005DBE74 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F480929BF64DA005DBE74 /* HomeViewController.swift */; };
 		390F480C29BF652C005DBE74 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F480B29BF652C005DBE74 /* HomeView.swift */; };
-		390F480E29BF71BA005DBE74 /* ValidationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F480D29BF71BA005DBE74 /* ValidationExtension.swift */; };
+		390F480E29BF71BA005DBE74 /* String+validationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F480D29BF71BA005DBE74 /* String+validationExtension.swift */; };
 		390F481029C08019005DBE74 /* HomeViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F480F29C08019005DBE74 /* HomeViewViewModel.swift */; };
 		390F481229C08493005DBE74 /* CreateSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F481129C08493005DBE74 /* CreateSections.swift */; };
 		390F481529C09087005DBE74 /* HeaderForCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F481429C09087005DBE74 /* HeaderForCollectionView.swift */; };
-		390F481729C0B404005DBE74 /* TransparentTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F481629C0B404005DBE74 /* TransparentTabbar.swift */; };
+		390F481729C0B404005DBE74 /* UITabBar+transparent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F481629C0B404005DBE74 /* UITabBar+transparent.swift */; };
 		390F481929C0BBC3005DBE74 /* RightBarButtonItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F481829C0BBC3005DBE74 /* RightBarButtonItemView.swift */; };
 		390F481B29C0D388005DBE74 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F481A29C0D388005DBE74 /* SearchBarView.swift */; };
 		390F481E29C1C06E005DBE74 /* MenuItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F481D29C1C06E005DBE74 /* MenuItemCollectionViewCell.swift */; };
@@ -65,6 +65,7 @@
 		390F483929C4D656005DBE74 /* ProfileMenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F483829C4D656005DBE74 /* ProfileMenuItems.swift */; };
 		390F483D29C4E19D005DBE74 /* ProfileMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F483C29C4E19D005DBE74 /* ProfileMenuTableViewCell.swift */; };
 		390F483F29C4ED9F005DBE74 /* UItableViewCell+accessoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F483E29C4ED9F005DBE74 /* UItableViewCell+accessoryType.swift */; };
+		390F484129C85B3A005DBE74 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F484029C85B3A005DBE74 /* UserDefaultsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,7 +80,7 @@
 		390F47BE29BF1ED1005DBE74 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		390F47C029BF1F9F005DBE74 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		390F47C229BF2039005DBE74 /* APICacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICacheManager.swift; sourceTree = "<group>"; };
-		390F47C529BF21F7005DBE74 /* ColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHex.swift; sourceTree = "<group>"; };
+		390F47C529BF21F7005DBE74 /* UIColor+colorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+colorHex.swift"; sourceTree = "<group>"; };
 		390F47CD29BF2A75005DBE74 /* Montserrat-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-BlackItalic.ttf"; sourceTree = "<group>"; };
 		390F47CE29BF2A75005DBE74 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		390F47D029BF2A75005DBE74 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -97,7 +98,7 @@
 		390F47F729BF3042005DBE74 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		390F47F929BF3073005DBE74 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		390F47FB29BF30D9005DBE74 /* SignInViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewViewModel.swift; sourceTree = "<group>"; };
-		390F47FD29BF3137005DBE74 /* AddSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSubviews.swift; sourceTree = "<group>"; };
+		390F47FD29BF3137005DBE74 /* UIView+addSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addSubviews.swift"; sourceTree = "<group>"; };
 		390F47FF29BF33A6005DBE74 /* CustomUIClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIClasses.swift; sourceTree = "<group>"; };
 		390F480129BF5BC7005DBE74 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		390F480329BF5C14005DBE74 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
@@ -105,11 +106,11 @@
 		390F480729BF63EF005DBE74 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		390F480929BF64DA005DBE74 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		390F480B29BF652C005DBE74 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		390F480D29BF71BA005DBE74 /* ValidationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationExtension.swift; sourceTree = "<group>"; };
+		390F480D29BF71BA005DBE74 /* String+validationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+validationExtension.swift"; sourceTree = "<group>"; };
 		390F480F29C08019005DBE74 /* HomeViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewViewModel.swift; sourceTree = "<group>"; };
 		390F481129C08493005DBE74 /* CreateSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSections.swift; sourceTree = "<group>"; };
 		390F481429C09087005DBE74 /* HeaderForCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderForCollectionView.swift; sourceTree = "<group>"; };
-		390F481629C0B404005DBE74 /* TransparentTabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransparentTabbar.swift; sourceTree = "<group>"; };
+		390F481629C0B404005DBE74 /* UITabBar+transparent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+transparent.swift"; sourceTree = "<group>"; };
 		390F481829C0BBC3005DBE74 /* RightBarButtonItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightBarButtonItemView.swift; sourceTree = "<group>"; };
 		390F481A29C0D388005DBE74 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		390F481D29C1C06E005DBE74 /* MenuItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -128,6 +129,7 @@
 		390F483829C4D656005DBE74 /* ProfileMenuItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuItems.swift; sourceTree = "<group>"; };
 		390F483C29C4E19D005DBE74 /* ProfileMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuTableViewCell.swift; sourceTree = "<group>"; };
 		390F483E29C4ED9F005DBE74 /* UItableViewCell+accessoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UItableViewCell+accessoryType.swift"; sourceTree = "<group>"; };
+		390F484029C85B3A005DBE74 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +242,7 @@
 				390F481129C08493005DBE74 /* CreateSections.swift */,
 				390F482429C1D695005DBE74 /* ImageLoader.swift */,
 				390F483429C4D00B005DBE74 /* ImagePickerManager.swift */,
+				390F484029C85B3A005DBE74 /* UserDefaultsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -257,11 +260,11 @@
 		390F47C429BF21E8005DBE74 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				390F47C529BF21F7005DBE74 /* ColorHex.swift */,
+				390F47C529BF21F7005DBE74 /* UIColor+colorHex.swift */,
 				390F47F329BF2AE7005DBE74 /* CustomFonts.swift */,
-				390F47FD29BF3137005DBE74 /* AddSubviews.swift */,
-				390F480D29BF71BA005DBE74 /* ValidationExtension.swift */,
-				390F481629C0B404005DBE74 /* TransparentTabbar.swift */,
+				390F47FD29BF3137005DBE74 /* UIView+addSubviews.swift */,
+				390F480D29BF71BA005DBE74 /* String+validationExtension.swift */,
+				390F481629C0B404005DBE74 /* UITabBar+transparent.swift */,
 				390F483E29C4ED9F005DBE74 /* UItableViewCell+accessoryType.swift */,
 			);
 			path = Extensions;
@@ -424,7 +427,7 @@
 				390F483D29C4E19D005DBE74 /* ProfileMenuTableViewCell.swift in Sources */,
 				390F480429BF5C14005DBE74 /* LogInView.swift in Sources */,
 				390F481E29C1C06E005DBE74 /* MenuItemCollectionViewCell.swift in Sources */,
-				390F47C629BF21F7005DBE74 /* ColorHex.swift in Sources */,
+				390F47C629BF21F7005DBE74 /* UIColor+colorHex.swift in Sources */,
 				390F47C329BF2039005DBE74 /* APICacheManager.swift in Sources */,
 				390F47A929BF1BF6005DBE74 /* InternshipECommerceApp.xcdatamodeld in Sources */,
 				390F482529C1D695005DBE74 /* ImageLoader.swift in Sources */,
@@ -432,9 +435,9 @@
 				390F483729C4D407005DBE74 /* ProfileViewViewModel.swift in Sources */,
 				390F481029C08019005DBE74 /* HomeViewViewModel.swift in Sources */,
 				390F483929C4D656005DBE74 /* ProfileMenuItems.swift in Sources */,
-				390F480E29BF71BA005DBE74 /* ValidationExtension.swift in Sources */,
+				390F480E29BF71BA005DBE74 /* String+validationExtension.swift in Sources */,
 				390F482329C1D47C005DBE74 /* LatestCollectionViewCellViewModel.swift in Sources */,
-				390F47FE29BF3137005DBE74 /* AddSubviews.swift in Sources */,
+				390F47FE29BF3137005DBE74 /* UIView+addSubviews.swift in Sources */,
 				390F480029BF33A6005DBE74 /* CustomUIClasses.swift in Sources */,
 				390F47BD29BF1E4F005DBE74 /* Service.swift in Sources */,
 				390F481229C08493005DBE74 /* CreateSections.swift in Sources */,
@@ -455,9 +458,10 @@
 				390F483529C4D00B005DBE74 /* ImagePickerManager.swift in Sources */,
 				390F480229BF5BC7005DBE74 /* LogInViewController.swift in Sources */,
 				390F482D29C1F856005DBE74 /* FlashSale.swift in Sources */,
-				390F481729C0B404005DBE74 /* TransparentTabbar.swift in Sources */,
+				390F481729C0B404005DBE74 /* UITabBar+transparent.swift in Sources */,
 				390F481B29C0D388005DBE74 /* SearchBarView.swift in Sources */,
 				390F479F29BF1BF6005DBE74 /* AppDelegate.swift in Sources */,
+				390F484129C85B3A005DBE74 /* UserDefaultsManager.swift in Sources */,
 				390F482029C1CBDB005DBE74 /* LatestCollectionViewCell.swift in Sources */,
 				390F47A129BF1BF6005DBE74 /* SceneDelegate.swift in Sources */,
 				390F47FA29BF3073005DBE74 /* SignInView.swift in Sources */,

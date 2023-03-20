@@ -38,9 +38,10 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: ProfileViewDelegate {
     func logOut() {
         let signIn = SignInViewController()
-        signIn.modalTransitionStyle = .coverVertical
-        signIn.modalPresentationStyle = .fullScreen
-        present(signIn, animated: true)
+        let navController = UINavigationController(rootViewController: signIn)
+        navController.modalTransitionStyle = .coverVertical
+        navController.modalPresentationStyle = .fullScreen
+        present(navController, animated: true)
     }
     
     func changeUserAvatar() {

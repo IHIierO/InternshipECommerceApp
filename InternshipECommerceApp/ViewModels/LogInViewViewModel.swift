@@ -51,6 +51,7 @@ final class LogInViewViewModel {
     }
     
     private func isCorrectLogin() -> Bool {
-       return firstName == "Artem" && password == "123456Qwerty"
+        guard let userFirstName = UserDefaults.standard.value(forKey: "firstName") as? String else {return false}
+       return firstName == userFirstName && password == "123456Qwerty"
     }
 }

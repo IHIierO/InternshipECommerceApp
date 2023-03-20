@@ -16,7 +16,7 @@ enum SignInStates {
 }
 
 final class SignInViewViewModel {
-    @Published var email = ""
+    @Published var email: String = ""
     @Published var firstName = ""
     @Published var lastName = ""
     @Published var state: SignInStates = .none
@@ -57,7 +57,12 @@ final class SignInViewViewModel {
         }
     }
     
+    public func saveUserData() {
+        UserDefaultsManager.share.saveUserData(firstName: firstName, lastName: lastName, email: email)
+    }
+    
     private func isCorrectEmail() -> Bool {
-       return email != "test@mail.ru" 
+        guard let userEmail = UserDefaults.standard.object(forKey: "email") as? String else {return false}
+        return email != userEmail
     }
 }

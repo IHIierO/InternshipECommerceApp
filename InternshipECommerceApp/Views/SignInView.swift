@@ -192,6 +192,7 @@ class SignInView: UIView {
                     }
                 case .success:
                     self?.delegate?.showTabBar()
+                    self?.viewModel.saveUserData()
                 case . failed:
                     self?.validateLabel.isHidden = false
                     self?.validateLabel.text = "Email already exists"
@@ -245,5 +246,4 @@ class SignInView: UIView {
             signInWithAppleButton.topAnchor.constraint(equalTo: signInWithGoogleButton.bottomAnchor, constant: 48),
         ])
     }
-    
 }
