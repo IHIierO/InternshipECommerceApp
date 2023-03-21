@@ -7,6 +7,23 @@
 
 import Foundation
 
+enum ValidationError: CaseIterable {
+    case incorrectEmail
+    case userDataAlreadyExist
+    case incorrectNameOrPassword
+    
+    var errorsDiscription: String {
+        switch self {
+        case .incorrectEmail:
+            return "Incorrect Email"
+        case .userDataAlreadyExist:
+            return "A user with such data already exists"
+        case .incorrectNameOrPassword:
+            return "Incorrect name or password"
+        }
+    }
+}
+
 extension String {
     
     //To check text field or String is blank or not

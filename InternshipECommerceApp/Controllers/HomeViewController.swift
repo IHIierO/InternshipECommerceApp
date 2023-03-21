@@ -28,6 +28,7 @@ class HomeViewController: UIViewController {
     private func setupController() {
         view.backgroundColor = .systemBackground
         view.addSubviews(homeView, rightBarButtonView, searchBarView)
+        homeView.delegate = self
     }
     
     private func setConstraints() {
@@ -74,3 +75,11 @@ class HomeViewController: UIViewController {
     }
 }
 
+extension HomeViewController: HomeViewDelegate {
+    func didSelectLatest(_ latest: Latest) {
+        let detailVC = DetailViewController()
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
+    
+}

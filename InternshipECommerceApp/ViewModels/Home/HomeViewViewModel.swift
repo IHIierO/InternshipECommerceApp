@@ -11,7 +11,7 @@ import Combine
 //MARK: - HomeViewViewModelDelegate
 protocol HomeViewViewModelDelegate: AnyObject {
     func didLoadInitialData()
-    //func didSelectLatest(_ latest: Latest)
+    func didSelectLatest(_ latest: Latest)
 }
 
 final class HomeViewViewModel: NSObject {
@@ -215,6 +215,24 @@ extension HomeViewViewModel: UICollectionViewDataSource, UICollectionViewDelegat
             return header
         case .none:
             return header
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let sections = HomeSectionKind(rawValue: indexPath.section)
+        switch sections {
+        case .menu:
+            break
+        case .latest:
+            let latest = latests[indexPath.row]
+            delegate?.didSelectLatest(latest)
+        case .flashSale:
+            break
+        case .brands:
+            break
+        case .none:
+            break
         }
     }
     

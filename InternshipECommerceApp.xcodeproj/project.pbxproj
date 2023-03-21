@@ -66,6 +66,12 @@
 		390F483D29C4E19D005DBE74 /* ProfileMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F483C29C4E19D005DBE74 /* ProfileMenuTableViewCell.swift */; };
 		390F483F29C4ED9F005DBE74 /* UItableViewCell+accessoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F483E29C4ED9F005DBE74 /* UItableViewCell+accessoryType.swift */; };
 		390F484129C85B3A005DBE74 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F484029C85B3A005DBE74 /* UserDefaultsManager.swift */; };
+		390F484429C9ED49005DBE74 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F484329C9ED49005DBE74 /* DetailViewController.swift */; };
+		390F484629C9EDA1005DBE74 /* DetailRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F484529C9EDA1005DBE74 /* DetailRootView.swift */; };
+		390F484929C9FB65005DBE74 /* ImagesBlockDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F484829C9FB65005DBE74 /* ImagesBlockDetailView.swift */; };
+		390F484B29CA0222005DBE74 /* UIstackView+Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F484A29CA0222005DBE74 /* UIstackView+Separator.swift */; };
+		390F484D29CA0593005DBE74 /* DescriptionBlockDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F484C29CA0593005DBE74 /* DescriptionBlockDetailView.swift */; };
+		390F484F29CA0F7C005DBE74 /* TotalBlockDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F484E29CA0F7C005DBE74 /* TotalBlockDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,6 +136,12 @@
 		390F483C29C4E19D005DBE74 /* ProfileMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMenuTableViewCell.swift; sourceTree = "<group>"; };
 		390F483E29C4ED9F005DBE74 /* UItableViewCell+accessoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UItableViewCell+accessoryType.swift"; sourceTree = "<group>"; };
 		390F484029C85B3A005DBE74 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		390F484329C9ED49005DBE74 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		390F484529C9EDA1005DBE74 /* DetailRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRootView.swift; sourceTree = "<group>"; };
+		390F484829C9FB65005DBE74 /* ImagesBlockDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesBlockDetailView.swift; sourceTree = "<group>"; };
+		390F484A29CA0222005DBE74 /* UIstackView+Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIstackView+Separator.swift"; sourceTree = "<group>"; };
+		390F484C29CA0593005DBE74 /* DescriptionBlockDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionBlockDetailView.swift; sourceTree = "<group>"; };
+		390F484E29CA0F7C005DBE74 /* TotalBlockDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalBlockDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +207,7 @@
 				390F480729BF63EF005DBE74 /* TabBarController.swift */,
 				390F480929BF64DA005DBE74 /* HomeViewController.swift */,
 				390F483029C4BE4B005DBE74 /* ProfileViewController.swift */,
+				390F484329C9ED49005DBE74 /* DetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -229,6 +242,7 @@
 				390F480329BF5C14005DBE74 /* LogInView.swift */,
 				390F481329C0906B005DBE74 /* Home */,
 				390F483B29C4E175005DBE74 /* ProfileVIew */,
+				390F484729C9FB48005DBE74 /* DetailView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -266,6 +280,7 @@
 				390F480D29BF71BA005DBE74 /* String+validationExtension.swift */,
 				390F481629C0B404005DBE74 /* UITabBar+transparent.swift */,
 				390F483E29C4ED9F005DBE74 /* UItableViewCell+accessoryType.swift */,
+				390F484A29CA0222005DBE74 /* UIstackView+Separator.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -336,6 +351,17 @@
 				390F483C29C4E19D005DBE74 /* ProfileMenuTableViewCell.swift */,
 			);
 			path = ProfileVIew;
+			sourceTree = "<group>";
+		};
+		390F484729C9FB48005DBE74 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				390F484529C9EDA1005DBE74 /* DetailRootView.swift */,
+				390F484829C9FB65005DBE74 /* ImagesBlockDetailView.swift */,
+				390F484C29CA0593005DBE74 /* DescriptionBlockDetailView.swift */,
+				390F484E29CA0F7C005DBE74 /* TotalBlockDetailView.swift */,
+			);
+			path = DetailView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -425,6 +451,7 @@
 				390F482929C1F6DB005DBE74 /* FlashSaleCollectionViewCellViewModel.swift in Sources */,
 				390F482B29C1F70F005DBE74 /* FlashSaleCollectionViewCell.swift in Sources */,
 				390F483D29C4E19D005DBE74 /* ProfileMenuTableViewCell.swift in Sources */,
+				390F484929C9FB65005DBE74 /* ImagesBlockDetailView.swift in Sources */,
 				390F480429BF5C14005DBE74 /* LogInView.swift in Sources */,
 				390F481E29C1C06E005DBE74 /* MenuItemCollectionViewCell.swift in Sources */,
 				390F47C629BF21F7005DBE74 /* UIColor+colorHex.swift in Sources */,
@@ -445,13 +472,18 @@
 				390F47FC29BF30D9005DBE74 /* SignInViewViewModel.swift in Sources */,
 				390F47F429BF2AE7005DBE74 /* CustomFonts.swift in Sources */,
 				390F47F829BF3042005DBE74 /* SignInViewController.swift in Sources */,
+				390F484D29CA0593005DBE74 /* DescriptionBlockDetailView.swift in Sources */,
+				390F484429C9ED49005DBE74 /* DetailViewController.swift in Sources */,
 				390F481929C0BBC3005DBE74 /* RightBarButtonItemView.swift in Sources */,
 				390F482F29C3803D005DBE74 /* DataManagerViewModel.swift in Sources */,
+				390F484629C9EDA1005DBE74 /* DetailRootView.swift in Sources */,
 				390F480829BF63EF005DBE74 /* TabBarController.swift in Sources */,
 				390F47F629BF2D75005DBE74 /* MenuItems.swift in Sources */,
 				390F480C29BF652C005DBE74 /* HomeView.swift in Sources */,
 				390F482729C1DA1B005DBE74 /* Latest.swift in Sources */,
+				390F484B29CA0222005DBE74 /* UIstackView+Separator.swift in Sources */,
 				390F481529C09087005DBE74 /* HeaderForCollectionView.swift in Sources */,
+				390F484F29CA0F7C005DBE74 /* TotalBlockDetailView.swift in Sources */,
 				390F483F29C4ED9F005DBE74 /* UItableViewCell+accessoryType.swift in Sources */,
 				390F483129C4BE4B005DBE74 /* ProfileViewController.swift in Sources */,
 				390F480A29BF64DA005DBE74 /* HomeViewController.swift in Sources */,

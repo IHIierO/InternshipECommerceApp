@@ -105,6 +105,7 @@ class SignInView: UIView {
         signInButton.addTarget(self, action: #selector(showTabBar), for: .touchUpInside)
         signInWithGoogleButton.addTarget(self, action: #selector(showTabBar), for: .touchUpInside)
         signInWithAppleButton.addTarget(self, action: #selector(showTabBar), for: .touchUpInside)
+        viewModel.delegate = self
         bindViewModel()
     }
     
@@ -126,11 +127,14 @@ class SignInView: UIView {
     
     private func initialState() {
         [firstNameTextField, lastNameTextField, emailTextField].forEach {
+            $0.returnKeyType = .done
+            $0.delegate = viewModel
             $0.backgroundColor = UIColor(hexString: "#E8E8E8")
             $0.textColor = UIColor(hexString: "#7B7B7B")
             $0.textAlignment = .center
             $0.font = UIFont(name: CustomFonts.montserratRegular, size: 14)
         }
+        emailTextField.tag = 1
         validateLabel.isHidden = true
         signInButton.isEnabled = false
     }
@@ -195,7 +199,7 @@ class SignInView: UIView {
                     self?.viewModel.saveUserData()
                 case . failed:
                     self?.validateLabel.isHidden = false
-                    self?.validateLabel.text = "Email already exists"
+                    self?.validateLabel.text = ValidationError.userDataAlreadyExist.errorsDiscription
                     self?.validateLabel.textColor = .red
                     self?.signInButton.configurationUpdateHandler = { signInButton in
                         self?.signInButton.configuration?.showsActivityIndicator = false
@@ -245,5 +249,19 @@ class SignInView: UIView {
             
             signInWithAppleButton.topAnchor.constraint(equalTo: signInWithGoogleButton.bottomAnchor, constant: 48),
         ])
+    }
+}
+
+extension SignInView: SignInViewViewModelDelegate {
+    func hideValidationError() {
+        validateLabel.isHidden = translatesAutoresizingMaskIntoConstraints
+        validateLabel.text = ""
+        validateLabel.textColor = .label
+    }
+    
+    func showValidationError() {
+        validateLabel.isHidden = false
+        validateLabel.text = ValidationError.incorrectEmail.errorsDiscription
+        validateLabel.textColor = .red
     }
 }

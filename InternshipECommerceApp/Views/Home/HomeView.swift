@@ -7,9 +7,14 @@
 
 import UIKit
 
+protocol HomeViewDelegate: AnyObject {
+    func didSelectLatest(_ latest: Latest)
+}
+
 class HomeView: UIView {
     
     private let viewModel = HomeViewViewModel()
+    public weak var delegate: HomeViewDelegate?
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: viewModel.createLayout())
         collectionView.backgroundColor = UIColor(hexString: "#FAF9FF")
@@ -51,6 +56,10 @@ class HomeView: UIView {
 
 
 extension HomeView: HomeViewViewModelDelegate {
+    func didSelectLatest(_ latest: Latest) {
+        delegate?.didSelectLatest(latest)
+    }
+    
     func didLoadInitialData() {
         collectionView.reloadData()
     }

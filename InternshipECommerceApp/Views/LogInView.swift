@@ -131,7 +131,7 @@ class LogInView: UIView {
                     self?.delegate?.showTabBar()
                 case . failed:
                     self?.validateLabel.isHidden = false
-                    self?.validateLabel.text = "Incorrect name or password"
+                    self?.validateLabel.text = ValidationError.incorrectNameOrPassword.errorsDiscription
                     self?.validateLabel.textColor = .red
                     self?.logInButton.configurationUpdateHandler = { logInButton in
                         self?.logInButton.configuration?.showsActivityIndicator = false

@@ -15,11 +15,18 @@ enum SignInStates {
     case none
 }
 
-final class SignInViewViewModel {
+protocol SignInViewViewModelDelegate: AnyObject {
+    func showValidationError()
+    func hideValidationError()
+}
+
+final class SignInViewViewModel: NSObject {
     @Published var email: String = ""
     @Published var firstName = ""
     @Published var lastName = ""
     @Published var state: SignInStates = .none
+    
+    public weak var delegate: SignInViewViewModelDelegate?
     
     private var isValidEmailPublisher: AnyPublisher<Bool, Never> {
         $email
@@ -64,5 +71,23 @@ final class SignInViewViewModel {
     private func isCorrectEmail() -> Bool {
         guard let userEmail = UserDefaults.standard.object(forKey: "email") as? String else {return false}
         return email != userEmail
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension SignInViewViewModel: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.tag == 1 {
+            guard let text = textField.text else {return}
+            if !text.isEmail {
+                delegate?.showValidationError()
+            } else {
+                delegate?.hideValidationError()
+            }
+        }
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
