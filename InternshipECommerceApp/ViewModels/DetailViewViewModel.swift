@@ -84,6 +84,7 @@ final class DetailViewViewModel: NSObject {
             
             view.ratingLabel.attributedText = imageString
             
+        view.colorsLabel.isHidden = false
             for i in 0 ..< detail.colors.count {
                 let button = UIButton(configuration: .filled())
                 button.configuration?.baseBackgroundColor = UIColor(hexString: "\(detail.colors[i])")

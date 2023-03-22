@@ -16,7 +16,7 @@ class DescriptionBlockDetailView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    private let colorsLabel = DefaultUILabel(inputText: "Color:", customFont: CustomFonts.montserratRegular, fontSize: 14, alingment: .left)
+    public let colorsLabel = DefaultUILabel(inputText: "Color:", customFont: CustomFonts.montserratRegular, fontSize: 14, alingment: .left)
     public let colorsStackView: UIStackView = {
        let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -32,6 +32,7 @@ class DescriptionBlockDetailView: UIView {
         addSubviews(nameLabel, priceLabel, descriptionLabel, ratingLabel, colorsLabel, colorsStackView)
         nameLabel.numberOfLines = 2
         descriptionLabel.numberOfLines = 0
+        colorsLabel.isHidden = true
         setConstraints()
     }
     

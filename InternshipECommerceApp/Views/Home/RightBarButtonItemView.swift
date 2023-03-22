@@ -12,7 +12,7 @@ final class RightBarButtonItemView: UIView {
     private let avatarView: UIImageView = {
        let avatarView = UIImageView()
         avatarView.image = UIImage(named: "rightNavAvatar")
-        avatarView.contentMode = .scaleAspectFit
+        avatarView.contentMode = .scaleAspectFill
         avatarView.translatesAutoresizingMaskIntoConstraints = false
         return avatarView
     }()

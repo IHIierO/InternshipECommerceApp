@@ -68,7 +68,7 @@ final class MenuItemCollectionViewCell: UICollectionViewCell {
             menuItemImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.35),
             menuItemImageView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 0.35),
             
-            menuItemLabel.topAnchor.constraint(equalTo: menuItemImageContainer.bottomAnchor, constant: 10),
+            menuItemLabel.topAnchor.constraint(equalTo: menuItemImageContainer.bottomAnchor, constant: 5),
             menuItemLabel.leftAnchor.constraint(equalTo: leftAnchor),
             menuItemLabel.rightAnchor.constraint(equalTo: rightAnchor),
             menuItemLabel.bottomAnchor.constraint(equalTo: bottomAnchor),

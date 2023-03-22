@@ -46,6 +46,7 @@ class SignInView: UIView {
        let label = UILabel()
         label.text = "Already have an account?"
         label.font = UIFont(name: CustomFonts.montserratLight, size: 11)
+        label.adjustsFontSizeToFitWidth = true
         label.textColor = UIColor(hexString: "#808080")
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
