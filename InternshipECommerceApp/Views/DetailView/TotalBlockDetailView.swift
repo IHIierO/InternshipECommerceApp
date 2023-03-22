@@ -10,7 +10,9 @@ import UIKit
 class TotalBlockDetailView: UIView {
     
     private let quantityLabel = DefaultUILabel(inputText: "Quantity:", customFont: CustomFonts.montserratRegular, fontSize: 12, colorForText: UIColor(hexString: "#808080"), alingment: .left)
-    private let quantityCountLabel = DefaultUILabel(inputText: "44", customFont: CustomFonts.montserratMedium, fontSize: 15, colorForText: .white, alingment: .center)
+    private var quantityCount = 1
+    public var price = 0
+    private let quantityCountLabel = DefaultUILabel(inputText: "", customFont: CustomFonts.montserratMedium, fontSize: 15, colorForText: .white, alingment: .center)
     private let minusButton: UIButton = {
        let button = UIButton()
         button.configuration = .filled()
@@ -29,37 +31,65 @@ class TotalBlockDetailView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    private let addToCartButton: UIButton = {
+    public let addToCartButton: UIButton = {
        let button = UIButton()
         button.configuration = .filled()
         button.configuration?.cornerStyle = .large
-        button.configuration?.title = "ADD TO CART"
         button.configuration?.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
             var outgoing = incoming
             outgoing.font = UIFont(name: CustomFonts.montserratBold, size: 12)
             return outgoing
         }
-        
-        button.configuration?.subtitle = "# 2,500"
         button.configuration?.baseForegroundColor = UIColor(hexString: "#4E55D7")
-       // button.configuration?.baseForegroundColor = UIColor(hexString: "#254FE6")
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupView()
+        setConstraints()
+        buttonsLogic()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupView() {
         backgroundColor = UIColor(hexString: "#181726")
         clipsToBounds = true
         layer.cornerRadius = 20
         layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         translatesAutoresizingMaskIntoConstraints = false
         addSubviews(quantityLabel, quantityCountLabel, minusButton, plusButton, addToCartButton)
-        setConstraints()
+        quantityCountLabel.text = String(describing: quantityCount)
+        addToCartButton.configuration?.title = "# " + String(describing: price) + " " + "ADD TO CART"
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    private func buttonsLogic() {
+        minusButton.addTarget(self, action: #selector(minusTotalCount), for: .touchUpInside)
+        plusButton.addTarget(self, action: #selector(plusTotalCount), for: .touchUpInside)
+    }
+    
+    @objc private func minusTotalCount() {
+        if quantityCount != 1 {
+            quantityCount = quantityCount - 1
+        } else {
+            quantityCount = quantityCount - 0
+        }
+        quantityCountLabel.text = String(describing: quantityCount)
+        addToCartButton.configuration?.title = "# " + String(describing: price * quantityCount) + " " + "ADD TO CART"
+    }
+    
+    @objc private func plusTotalCount() {
+        if quantityCount != 10 {
+            quantityCount = quantityCount + 1
+        } else {
+            quantityCount = quantityCount + 0
+        }
+        quantityCountLabel.text = String(describing: quantityCount)
+        addToCartButton.configuration?.title = "# " + String(describing: price * quantityCount) + " " + "ADD TO CART"
     }
     private func setConstraints(){
         NSLayoutConstraint.activate([

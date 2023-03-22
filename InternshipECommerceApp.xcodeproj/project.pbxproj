@@ -72,6 +72,8 @@
 		390F484B29CA0222005DBE74 /* UIstackView+Separator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F484A29CA0222005DBE74 /* UIstackView+Separator.swift */; };
 		390F484D29CA0593005DBE74 /* DescriptionBlockDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F484C29CA0593005DBE74 /* DescriptionBlockDetailView.swift */; };
 		390F484F29CA0F7C005DBE74 /* TotalBlockDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F484E29CA0F7C005DBE74 /* TotalBlockDetailView.swift */; };
+		390F485129CB0974005DBE74 /* DetailViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F485029CB0974005DBE74 /* DetailViewViewModel.swift */; };
+		390F485329CB0B62005DBE74 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F485229CB0B62005DBE74 /* Detail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,6 +144,8 @@
 		390F484A29CA0222005DBE74 /* UIstackView+Separator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIstackView+Separator.swift"; sourceTree = "<group>"; };
 		390F484C29CA0593005DBE74 /* DescriptionBlockDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionBlockDetailView.swift; sourceTree = "<group>"; };
 		390F484E29CA0F7C005DBE74 /* TotalBlockDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalBlockDetailView.swift; sourceTree = "<group>"; };
+		390F485029CB0974005DBE74 /* DetailViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewViewModel.swift; sourceTree = "<group>"; };
+		390F485229CB0B62005DBE74 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +223,7 @@
 				390F483829C4D656005DBE74 /* ProfileMenuItems.swift */,
 				390F482629C1DA1B005DBE74 /* Latest.swift */,
 				390F482C29C1F856005DBE74 /* FlashSale.swift */,
+				390F485229CB0B62005DBE74 /* Detail.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 				390F482129C1D470005DBE74 /* Home */,
 				390F482E29C3803D005DBE74 /* DataManagerViewModel.swift */,
 				390F483629C4D407005DBE74 /* ProfileViewViewModel.swift */,
+				390F485029CB0974005DBE74 /* DetailViewViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -456,6 +462,7 @@
 				390F481E29C1C06E005DBE74 /* MenuItemCollectionViewCell.swift in Sources */,
 				390F47C629BF21F7005DBE74 /* UIColor+colorHex.swift in Sources */,
 				390F47C329BF2039005DBE74 /* APICacheManager.swift in Sources */,
+				390F485129CB0974005DBE74 /* DetailViewViewModel.swift in Sources */,
 				390F47A929BF1BF6005DBE74 /* InternshipECommerceApp.xcdatamodeld in Sources */,
 				390F482529C1D695005DBE74 /* ImageLoader.swift in Sources */,
 				390F47BF29BF1ED1005DBE74 /* Request.swift in Sources */,
@@ -469,6 +476,7 @@
 				390F47BD29BF1E4F005DBE74 /* Service.swift in Sources */,
 				390F481229C08493005DBE74 /* CreateSections.swift in Sources */,
 				390F480629BF5C36005DBE74 /* LogInViewViewModel.swift in Sources */,
+				390F485329CB0B62005DBE74 /* Detail.swift in Sources */,
 				390F47FC29BF30D9005DBE74 /* SignInViewViewModel.swift in Sources */,
 				390F47F429BF2AE7005DBE74 /* CustomFonts.swift in Sources */,
 				390F47F829BF3042005DBE74 /* SignInViewController.swift in Sources */,

@@ -9,6 +9,8 @@ import UIKit
 
 class DetailRootView: UIView {
     
+    private let viewModel = DetailViewViewModel()
+    
     private let imagesBlockDetailView = ImagesBlockDetailView()
     private let descriptionBlockDetailView = DescriptionBlockDetailView()
     private let totalBlockDetailView = TotalBlockDetailView()
@@ -19,6 +21,8 @@ class DetailRootView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         addSubviews(imagesBlockDetailView, descriptionBlockDetailView, totalBlockDetailView)
         setConstraints()
+        viewModel.delegate = self
+        viewModel.fetchDetail()
     }
     
     required init?(coder: NSCoder) {
@@ -42,5 +46,13 @@ class DetailRootView: UIView {
             totalBlockDetailView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
-    
+}
+
+extension DetailRootView: DetailViewViewModelDelegate {
+    func updateDetailView() {
+        imagesBlockDetailView.spinner.stopAnimating()
+        viewModel.updateImageBlockDetailView(for: imagesBlockDetailView)
+        viewModel.updateDescriptionBlockDetailView(for: descriptionBlockDetailView)
+        viewModel.updateTotalBlockDetailView(for: totalBlockDetailView)
+    }
 }

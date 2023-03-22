@@ -9,22 +9,28 @@ import UIKit
 
 class ImagesBlockDetailView: UIView {
     
-    let imagesScrollView: UIScrollView = {
+    public let spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.hidesWhenStopped = true
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        return spinner
+    }()
+    public let imagesScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsHorizontalScrollIndicator = false
-        scrollView.backgroundColor = .systemCyan
-        scrollView.isPagingEnabled = false
+        scrollView.isPagingEnabled = true
         scrollView.clipsToBounds = true
+        scrollView.bounces = false
         scrollView.layer.cornerRadius = 12
         scrollView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
-    let chooseImageScrollView: UIScrollView = {
+    public let chooseImageScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.backgroundColor = .systemMint
-        scrollView.isPagingEnabled = false
+        scrollView.isPagingEnabled = true
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
@@ -58,17 +64,22 @@ class ImagesBlockDetailView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .clear
-        addSubviews(imagesScrollView, chooseImageScrollView, menuStackView)
-        menuStackView.addArrangedSubview(addToFavoriteButton)
-        menuStackView.addArrangedSubview(shareButton)
-        menuStackView.addSeparators(color: UIColor(hexString: "#545589"))
+        setupView()
         setConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupView() {
+        translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = .clear
+        addSubviews(spinner, imagesScrollView, chooseImageScrollView, menuStackView)
+        spinner.startAnimating()
+        menuStackView.addArrangedSubview(addToFavoriteButton)
+        menuStackView.addArrangedSubview(shareButton)
+        menuStackView.addSeparators(color: UIColor(hexString: "#545589"))
     }
 
     private func setConstraints() {
@@ -77,6 +88,11 @@ class ImagesBlockDetailView: UIView {
             imagesScrollView.leftAnchor.constraint(equalTo: leftAnchor),
             imagesScrollView.rightAnchor.constraint(equalTo: rightAnchor, constant: -60),
             imagesScrollView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.8),
+            
+            spinner.centerXAnchor.constraint(equalTo: imagesScrollView.centerXAnchor),
+            spinner.centerYAnchor.constraint(equalTo: imagesScrollView.centerYAnchor),
+            spinner.widthAnchor.constraint(equalToConstant: 100),
+            spinner.heightAnchor.constraint(equalToConstant: 100),
             
             chooseImageScrollView.topAnchor.constraint(equalTo: imagesScrollView.bottomAnchor, constant: 10),
             chooseImageScrollView.leftAnchor.constraint(equalTo: leftAnchor),

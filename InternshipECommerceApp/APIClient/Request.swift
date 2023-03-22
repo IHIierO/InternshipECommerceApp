@@ -114,4 +114,5 @@ extension Request {
     static let latestRequest = Request(endpoint: .latest)
     static let flashSaleRequest = Request(endpoint: .flashSale)
     static let brandsRequest = Request(endpoint: .brands)
+    static let detailRequest = Request(endpoint: .detail)
 }

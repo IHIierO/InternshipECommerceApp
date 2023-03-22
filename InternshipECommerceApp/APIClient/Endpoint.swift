@@ -15,6 +15,8 @@ import Foundation
     case flashSale
     /// Endpoint to get brands info
     case brands
+    /// Endpoint to get detail info
+    case detail
     
     var name: String {
         switch self {
@@ -24,6 +26,8 @@ import Foundation
             return "a9ceeb6e-416d-4352-bde6-2203416576ac"
         case .brands:
             return ""
+        case .detail:
+            return "f7f99d04-4971-45d5-92e0-70333383c239"
         }
     }
 }

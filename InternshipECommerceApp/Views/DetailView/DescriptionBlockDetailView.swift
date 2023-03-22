@@ -8,31 +8,21 @@
 import UIKit
 
 class DescriptionBlockDetailView: UIView {
-    private let nameLabel = DefaultUILabel(inputText: "Reebok Classic Classiccccc", customFont: CustomFonts.montserratMedium, fontSize: 18, alingment: .left)
-    private let priceLabel = DefaultUILabel(inputText: "$ 24", customFont: CustomFonts.montserratMedium, fontSize: 16, alingment: .right)
-    private let descriptionLabel = DefaultUILabel(inputText: "Shoes inspired by 80s running shoes are still relevant today", customFont: CustomFonts.montserratRegular, fontSize: 14, colorForText: UIColor(hexString: "#808080"), alingment: .left)
-    private let ratingLabel: UILabel = {
+    public let nameLabel = DefaultUILabel(inputText: "", customFont: CustomFonts.montserratMedium, fontSize: 18, alingment: .left)
+    public let priceLabel = DefaultUILabel(inputText: "", customFont: CustomFonts.montserratMedium, fontSize: 16, alingment: .right)
+    public let descriptionLabel = DefaultUILabel(inputText: "", customFont: CustomFonts.montserratRegular, fontSize: 14, colorForText: UIColor(hexString: "#808080"), alingment: .left)
+    public let ratingLabel: UILabel = {
         let label = UILabel()
-        let attachment = NSTextAttachment()
-        attachment.image = UIImage(systemName: "star")?.withTintColor(UIColor(hexString: "#F6C042"))
-        attachment.bounds = CGRect(x: 0, y: 0, width: 16, height: 16)
-        
-        let myAttribute = [ NSAttributedString.Key.font: UIFont(name: CustomFonts.montserratRegular, size: 12.0) ]
-        
-        let imageString = NSMutableAttributedString(attachment: attachment)
-        let textString = NSAttributedString(string: "4.3 (4000 reviews)", attributes: myAttribute as [NSAttributedString.Key : Any])
-        imageString.append(textString)
-        
-        label.attributedText = imageString
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     private let colorsLabel = DefaultUILabel(inputText: "Color:", customFont: CustomFonts.montserratRegular, fontSize: 14, alingment: .left)
-    private let colorsStackView: UIStackView = {
+    public let colorsStackView: UIStackView = {
        let stackView = UIStackView()
         stackView.axis = .horizontal
+        stackView.spacing = 8
+        stackView.distribution = .fillEqually
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.backgroundColor = .systemTeal
         return stackView
     }()
 
@@ -74,7 +64,7 @@ class DescriptionBlockDetailView: UIView {
             
             colorsStackView.topAnchor.constraint(equalTo: colorsLabel.bottomAnchor, constant: 4),
             colorsStackView.leftAnchor.constraint(equalTo: nameLabel.leftAnchor),
-            colorsStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6),
+            //colorsStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6),
             colorsStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
