@@ -56,8 +56,6 @@ class TabBarController: UITabBarController{
     private func createNavigationControllers(viewControllers: UIViewController, tabBarItemImage: String, tabBarItemBage: String?, tag: Int) -> UINavigationController{
         let tabBarItem = UITabBarItem(title: nil, image: UIImage(named: tabBarItemImage)?.withRenderingMode(.alwaysOriginal), tag: tag)
         tabBarItem.imageInsets = UIEdgeInsets(top: 10, left: .zero, bottom: -10, right: .zero)
-        #warning("delete title")
-        tabBarItem.title = nil
         tabBarItem.badgeValue = tabBarItemBage
         let navigationController = UINavigationController(rootViewController: viewControllers)
         navigationController.tabBarItem = tabBarItem

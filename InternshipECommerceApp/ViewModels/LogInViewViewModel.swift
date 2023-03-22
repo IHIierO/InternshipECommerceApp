@@ -15,7 +15,7 @@ enum LogInInStates {
     case none
 }
 
-final class LogInViewViewModel {
+final class LogInViewViewModel: NSObject {
     @Published var firstName = ""
     @Published var password = ""
     @Published var state: LogInInStates = .none
@@ -53,5 +53,12 @@ final class LogInViewViewModel {
     private func isCorrectLogin() -> Bool {
         guard let userFirstName = UserDefaults.standard.value(forKey: "firstName") as? String else {return false}
        return firstName == userFirstName && password == "123456Qwerty"
+    }
+}
+
+extension LogInViewViewModel: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

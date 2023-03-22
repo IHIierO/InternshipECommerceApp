@@ -17,7 +17,7 @@ class TotalBlockDetailView: UIView {
        let button = UIButton()
         button.configuration = .filled()
         button.configuration?.cornerStyle = .large
-        button.configuration?.image = UIImage(systemName: "minus")
+        button.configuration?.image = UIImage(systemName: "minus")?.applyingSymbolConfiguration(.init(scale: .small))
         button.configuration?.baseForegroundColor = UIColor(hexString: "#4E55D7")
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -26,7 +26,7 @@ class TotalBlockDetailView: UIView {
        let button = UIButton()
         button.configuration = .filled()
         button.configuration?.cornerStyle = .large
-        button.configuration?.image = UIImage(systemName: "plus")
+        button.configuration?.image = UIImage(systemName: "plus")?.applyingSymbolConfiguration(.init(scale: .small))
         button.configuration?.baseForegroundColor = UIColor(hexString: "#4E55D7")
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

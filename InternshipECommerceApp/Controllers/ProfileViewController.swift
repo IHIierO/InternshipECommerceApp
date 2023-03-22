@@ -14,7 +14,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Profile"
+        navigationItem.title = "Profile"
         view.addSubview(profileView)
         profileView.delegate = self
         view.backgroundColor = .systemBackground

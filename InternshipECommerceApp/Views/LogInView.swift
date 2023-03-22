@@ -80,6 +80,8 @@ class LogInView: UIView {
             $0.textColor = UIColor(hexString: "#7B7B7B")
             $0.textAlignment = .center
             $0.font = UIFont(name: CustomFonts.montserratRegular, size: 14)
+            $0.returnKeyType = .done
+            $0.delegate = viewModel
         }
         validateLabel.isHidden = true
         logInLabel.isEnabled = false
