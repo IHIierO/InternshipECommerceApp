@@ -1,0 +1,33 @@
+# InternshipECommerceApp
+
+<p align="center">
+      <img src="https://media.giphy.com/media/EauwThrXwq0EWngOcT/giphy.gif" width="640">
+</p>
+
+<p align="center">
+   <img src="https://img.shields.io/badge/Swift-Version%205-lightgrey" alt="Swift Version">
+   <img src="https://img.shields.io/badge/Ios-Version%2015%2B-important" alt="Ios Version">
+   <img src="https://img.shields.io/badge/App-Version%201.0-informational" alt="App Version">
+</p>
+
+<p align="center">
+<img src="https://komarev.com/ghpvc/?username=IHIierO&style=flat-square&color=blue" alt=""/>
+</p>
+
+## About
+
+Тестовый проект на вакансию.
+
+Основные экраны:
+
+1)Экран Регистрации и Входа с валидацией эмейла и пароля.
+
+2)Главный экран "Онлайн магазина" с несколькими разделами товаров и панелью навигации.
+
+3)Экран с детальной информацией по товару.
+
+4)Экран профайла с основной информацией о пользователе.
+
+## Developers
+
+- [Artem Vorobev](https://gist.github.com/IHIierO)
