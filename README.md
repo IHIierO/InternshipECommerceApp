@@ -8,7 +8,7 @@
       
 ![SignIn Page](https://user-images.githubusercontent.com/108677019/227249784-fd8544de-c1f2-40bc-8065-43c3ae6a8178.png | =375x812)
       
-![LogIn Page](https://user-images.githubusercontent.com/108677019/227249786-72e807cf-c16c-41e5-a750-d20aff31ff28.png)
+![LogIn Page](https://user-images.githubusercontent.com/108677019/227249786-72e807cf-c16c-41e5-a750-d20aff31ff28.png | =375x812)
       
 ![Profile Page](https://user-images.githubusercontent.com/108677019/227249790-5570aeb4-b2d1-411f-9bb0-fa0140fee151.png)
       
