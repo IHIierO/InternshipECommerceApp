@@ -95,6 +95,7 @@ class SignInView: UIView {
         return button
     }()
 
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
@@ -126,6 +127,7 @@ class SignInView: UIView {
         }
     }
     
+    // MARK: - initial state
     private func initialState() {
         [firstNameTextField, lastNameTextField, emailTextField].forEach {
             $0.returnKeyType = .done
@@ -140,6 +142,7 @@ class SignInView: UIView {
         signInButton.isEnabled = false
     }
     
+    // MARK: - bind ViewModel
     private func bindViewModel() {
         NotificationCenter.default
             .publisher(for: UITextField.textDidChangeNotification, object: firstNameTextField)
@@ -213,6 +216,7 @@ class SignInView: UIView {
             .store(in: &cancellables)
     }
     
+    // MARK: - set constraints
     private func setConstraints() {
         [signInLabel, firstNameTextField, lastNameTextField, emailTextField, signInButton, validateLabel,   signInWithGoogleButton, signInWithAppleButton].forEach {
             $0.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
@@ -253,6 +257,7 @@ class SignInView: UIView {
     }
 }
 
+// MARK: - validation error handling
 extension SignInView: SignInViewViewModelDelegate {
     func hideValidationError() {
         validateLabel.isHidden = translatesAutoresizingMaskIntoConstraints

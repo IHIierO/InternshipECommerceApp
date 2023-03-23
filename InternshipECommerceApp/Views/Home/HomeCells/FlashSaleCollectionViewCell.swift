@@ -44,6 +44,7 @@ final class FlashSaleCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.backgroundColor = .clear
@@ -70,6 +71,8 @@ final class FlashSaleCollectionViewCell: UICollectionViewCell {
         discountLabel.text = nil
     }
     
+    /// Configure cell
+    /// - Parameter viewModel: cell viewModel
     func configure(with viewModel: FlashSaleCollectionViewCellViewModel) {
         categoryLabel.text = viewModel.categoryLabel
         nameLabel.text = viewModel.nameLabel
@@ -89,6 +92,7 @@ final class FlashSaleCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    // MARK: - setupLayer
     private func setupLayer() {
         layer.cornerRadius = 8
         layer.masksToBounds = true
@@ -105,6 +109,7 @@ final class FlashSaleCollectionViewCell: UICollectionViewCell {
         nameLabel.numberOfLines = 2
     }
     
+    // MARK: - set constraints
     private func setConstraints() {
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: topAnchor),

@@ -40,7 +40,6 @@ final class LatestCollectionViewCellViewModel: Hashable, Equatable {
     }
     
     // MARK: - Hashable
-    
     static func == (lhs: LatestCollectionViewCellViewModel, rhs: LatestCollectionViewCellViewModel) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }

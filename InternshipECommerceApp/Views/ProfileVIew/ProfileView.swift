@@ -77,6 +77,7 @@ class ProfileView: UIView {
         return tableView
     }()
     
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
@@ -97,6 +98,7 @@ class ProfileView: UIView {
         delegate?.changeUserAvatar()
     }
     
+    // MARK: - set constraints
     private func setConstraints() {
         [userAvatarView, userNameLabel, changePhotoButton, uploadButton].forEach {
             $0.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
@@ -129,6 +131,7 @@ class ProfileView: UIView {
     }
 }
 
+// MARK: - ProfileViewViewModelDelegate
 extension ProfileView: ProfileViewViewModelDelegate {
     func logOut() {
         delegate?.logOut()

@@ -62,6 +62,7 @@ class ImagesBlockDetailView: UIView {
          return button
      }()
 
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -72,6 +73,7 @@ class ImagesBlockDetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - setupView
     private func setupView() {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .clear
@@ -82,6 +84,7 @@ class ImagesBlockDetailView: UIView {
         menuStackView.addSeparators(color: UIColor(hexString: "#545589"))
     }
 
+    // MARK: - set constraints
     private func setConstraints() {
         NSLayoutConstraint.activate([
             imagesScrollView.topAnchor.constraint(equalTo: topAnchor),

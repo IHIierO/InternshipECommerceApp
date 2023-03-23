@@ -22,7 +22,7 @@ class ProfileMenuTableViewCell: UITableViewCell {
     private let itemLabel = DefaultUILabel(inputText: "", customFont: CustomFonts.montserratMedium, fontSize: 16, alingment: .left)
     private let balanceLabel = DefaultUILabel(inputText: "", customFont: CustomFonts.montserratRegular, fontSize: 14, alingment: .right)
 
-    
+    // MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
@@ -48,12 +48,15 @@ class ProfileMenuTableViewCell: UITableViewCell {
         setupCell()
     }
     
+    // MARK: - setupCell
     private func setupCell() {
         itemLabel.textColor = UIColor(hexString: "#040402")
         itemImageView.layer.cornerRadius = itemImageView.frame.height / 2
         itemImageView.clipsToBounds = true
     }
     
+    /// Configure cell
+    /// - Parameter model: ProfileMenuItems model
     public func configure(with model: ProfileMenuItems) {
         itemImageView.image = model.itemImage
         itemLabel.text = model.itemName
@@ -66,6 +69,7 @@ class ProfileMenuTableViewCell: UITableViewCell {
         }
     }
     
+    // MARK: - set constraints
     private func setConstraints() {
         [itemImageView, itemLabel, balanceLabel].forEach {
             $0.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true

@@ -27,6 +27,7 @@ final class MenuItemCollectionViewCell: UICollectionViewCell {
     
     private let menuItemLabel = DefaultUILabel(inputText: "", customFont: CustomFonts.montserratLight, fontSize: 9, colorForText: UIColor(hexString: "#A6A7AB"), alingment: .center)
     
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.backgroundColor = .clear
@@ -56,6 +57,7 @@ final class MenuItemCollectionViewCell: UICollectionViewCell {
         menuItemImageContainer.layer.cornerRadius = width/2
     }
     
+    // MARK: - set constraints
     private func setConstraints() {
         NSLayoutConstraint.activate([
             menuItemImageContainer.topAnchor.constraint(equalTo: topAnchor, constant: 10),

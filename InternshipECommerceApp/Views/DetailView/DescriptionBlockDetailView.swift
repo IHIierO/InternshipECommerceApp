@@ -26,6 +26,7 @@ class DescriptionBlockDetailView: UIView {
         return stackView
     }()
 
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
@@ -39,6 +40,8 @@ class DescriptionBlockDetailView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - set constraints
     private func setConstraints(){
         NSLayoutConstraint.activate([
             nameLabel.topAnchor.constraint(equalTo: topAnchor),
@@ -65,9 +68,7 @@ class DescriptionBlockDetailView: UIView {
             
             colorsStackView.topAnchor.constraint(equalTo: colorsLabel.bottomAnchor, constant: 4),
             colorsStackView.leftAnchor.constraint(equalTo: nameLabel.leftAnchor),
-            //colorsStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.6),
             colorsStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
-
 }

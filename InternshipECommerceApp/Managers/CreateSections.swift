@@ -14,6 +14,11 @@ enum GroupAlignment {
 
 struct CreateSection {
     
+    /// Сreat item for UIcollectionView
+    /// - Parameters:
+    ///   - width: item width
+    ///   - height: item height
+    ///   - contentInsets: contetn insets
     static func createItem (width: NSCollectionLayoutDimension,
                             height: NSCollectionLayoutDimension,
                             contentInsets: NSDirectionalEdgeInsets
@@ -23,6 +28,13 @@ struct CreateSection {
         return item
     }
     
+    /// Create group for UIcollectionView
+    /// - Parameters:
+    ///   - alignment: group alignment
+    ///   - width: group width
+    ///   - height: group height
+    ///   - item: subItem for group
+    ///   - count: item count
     static func createGroup (alignment: GroupAlignment,
                              width: NSCollectionLayoutDimension,
                              height: NSCollectionLayoutDimension,
@@ -37,6 +49,12 @@ struct CreateSection {
         }
     }
     
+    /// Create group for UIcollectionView
+    /// - Parameters:
+    ///   - alignment: group alignment
+    ///   - width: group width
+    ///   - height: group height
+    ///   - item: subItems for group
     static func createGroup (alignment: GroupAlignment,
                              width: NSCollectionLayoutDimension,
                              height: NSCollectionLayoutDimension,

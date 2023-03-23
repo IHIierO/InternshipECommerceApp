@@ -16,6 +16,7 @@ final class DetailViewViewModel: NSObject {
     private var detail: Detail?
     public weak var delegate: DetailViewViewModelDelegate?
     
+    // MARK: - fetch detail data
     public func fetchDetail() {
         Service.shared.execute(.detailRequest, expexting: Detail.self) {
             [weak self] results in
@@ -33,6 +34,7 @@ final class DetailViewViewModel: NSObject {
         }
     }
     
+    // MARK: - updateImageBlockDetailView
     public func updateImageBlockDetailView(for view: UIView) {
         guard let detail = detail else {return}
         guard let view = view as? ImagesBlockDetailView else {return}
@@ -62,6 +64,7 @@ final class DetailViewViewModel: NSObject {
             view.imagesScrollView.addSubview(imageView)
         }
     }
+    // MARK: - updateDescriptionBlockDetailView
     public func updateDescriptionBlockDetailView(for view: UIView) {
         guard let detail = detail else {return}
         guard let view = view as? DescriptionBlockDetailView else {return}
@@ -96,6 +99,7 @@ final class DetailViewViewModel: NSObject {
             
         }
     }
+    // MARK: - updateTotalBlockDetailView
     public func updateTotalBlockDetailView(for view: UIView) {
         guard let detail = detail else {return}
         guard let view = view as? TotalBlockDetailView else {return}

@@ -46,7 +46,6 @@ final class FlashSaleCollectionViewCellViewModel: Hashable, Equatable {
     }
     
     // MARK: - Hashable
-    
     static func == (lhs: FlashSaleCollectionViewCellViewModel, rhs: FlashSaleCollectionViewCellViewModel) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }

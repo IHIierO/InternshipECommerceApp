@@ -29,6 +29,7 @@ final class LatestCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.backgroundColor = .clear
@@ -54,6 +55,9 @@ final class LatestCollectionViewCell: UICollectionViewCell {
         priceLabel.text = nil
     }
     
+    
+    /// Configure cell
+    /// - Parameter viewModel: cell viewModel
     func configure(with viewModel: LatestCollectionViewCellViewModel) {
         categoryLabel.text = viewModel.categoryLabel
         nameLabel.text = viewModel.nameLabel
@@ -72,6 +76,7 @@ final class LatestCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    // MARK: - setupLayer
     private func setupLayer() {
         layer.cornerRadius = 8
         layer.masksToBounds = true
@@ -82,6 +87,7 @@ final class LatestCollectionViewCell: UICollectionViewCell {
         categoryLabel.layer.masksToBounds = true
     }
     
+    // MARK: - set constraints
     private func setConstraints() {
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: topAnchor),

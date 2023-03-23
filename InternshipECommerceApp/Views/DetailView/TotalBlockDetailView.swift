@@ -45,6 +45,7 @@ class TotalBlockDetailView: UIView {
         return button
     }()
 
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -56,6 +57,7 @@ class TotalBlockDetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - setupView
     private func setupView() {
         backgroundColor = UIColor(hexString: "#181726")
         clipsToBounds = true
@@ -67,6 +69,7 @@ class TotalBlockDetailView: UIView {
         addToCartButton.configuration?.title = "# " + String(describing: price) + " " + "ADD TO CART"
     }
     
+    // MARK: - buttonsLogic
     private func buttonsLogic() {
         minusButton.addTarget(self, action: #selector(minusTotalCount), for: .touchUpInside)
         plusButton.addTarget(self, action: #selector(plusTotalCount), for: .touchUpInside)
@@ -91,6 +94,8 @@ class TotalBlockDetailView: UIView {
         quantityCountLabel.text = String(describing: quantityCount)
         addToCartButton.configuration?.title = "# " + String(describing: price * quantityCount) + " " + "ADD TO CART"
     }
+    
+    // MARK: - set constraints
     private func setConstraints(){
         NSLayoutConstraint.activate([
             quantityLabel.topAnchor.constraint(equalTo: topAnchor, constant: 25),
@@ -117,5 +122,4 @@ class TotalBlockDetailView: UIView {
             addToCartButton.heightAnchor.constraint(equalToConstant: 54),
         ])
     }
-
 }

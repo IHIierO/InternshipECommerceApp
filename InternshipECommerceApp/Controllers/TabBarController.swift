@@ -15,6 +15,7 @@ class TabBarController: UITabBarController{
         setTabBarAppearance()
     }
     
+    // MARK: - tabBarConfig
     private func tabBarConfig(){
         let homeViewController = createNavigationControllers(
             viewControllers: HomeViewController(),
@@ -53,6 +54,7 @@ class TabBarController: UITabBarController{
         })
     }
     
+    // MARK: - createNavigationControllers
     private func createNavigationControllers(viewControllers: UIViewController, tabBarItemImage: String, tabBarItemBage: String?, tag: Int) -> UINavigationController{
         let tabBarItem = UITabBarItem(title: nil, image: UIImage(named: tabBarItemImage)?.withRenderingMode(.alwaysOriginal), tag: tag)
         tabBarItem.imageInsets = UIEdgeInsets(top: 10, left: .zero, bottom: -10, right: .zero)
@@ -62,6 +64,7 @@ class TabBarController: UITabBarController{
         return navigationController
     }
     
+    // MARK: - setTabBarAppearance
     private func setTabBarAppearance(){
         UITabBar.setTransparentTabbar()
         let customLayer = CAShapeLayer()

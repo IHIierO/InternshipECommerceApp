@@ -19,6 +19,7 @@ final class SearchBarView: UIView {
         return searchIcon
     }()
     
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
@@ -31,6 +32,7 @@ final class SearchBarView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - setup SearchBar
     private func setupSearchBar() {
         searchTextField.layer.cornerRadius = 14.5
         searchTextField.backgroundColor = UIColor(hexString: "#F5F6F7")
@@ -40,6 +42,7 @@ final class SearchBarView: UIView {
         searchTextField.isEnabled = false
     }
     
+    // MARK: - set constraints
     private func setConstraints() {
         NSLayoutConstraint.activate([
             searchTextField.topAnchor.constraint(equalTo: topAnchor),

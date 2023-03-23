@@ -25,12 +25,14 @@ class HomeViewController: UIViewController {
         setConstraints()
     }
     
+    // MARK: - setupController
     private func setupController() {
         view.backgroundColor = .systemBackground
         view.addSubviews(homeView, rightBarButtonView, searchBarView)
         homeView.delegate = self
     }
     
+    // MARK: - set constraints
     private func setConstraints() {
         NSLayoutConstraint.activate([
             homeView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -50,6 +52,7 @@ class HomeViewController: UIViewController {
         ])
     }
     
+    // MARK: - setupNavigationItem
     private func setupNavigationItem() {
         navigationController?.navigationBar.prefersLargeTitles = false
         view.safeAreaLayoutGuide.owningView?.backgroundColor = UIColor(hexString: "#FAF9FF")
@@ -75,6 +78,7 @@ class HomeViewController: UIViewController {
     }
 }
 
+// MARK: - HomeViewDelegate
 extension HomeViewController: HomeViewDelegate {
     func didSelectLatest(_ latest: Latest) {
         let detailVC = DetailViewController()

@@ -15,7 +15,7 @@ class DetailRootView: UIView {
     private let descriptionBlockDetailView = DescriptionBlockDetailView()
     private let totalBlockDetailView = TotalBlockDetailView()
     
-
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
@@ -28,6 +28,8 @@ class DetailRootView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - set constraints
     private func setConstraints(){
         NSLayoutConstraint.activate([
             imagesBlockDetailView.topAnchor.constraint(equalTo: topAnchor),
@@ -48,6 +50,7 @@ class DetailRootView: UIView {
     }
 }
 
+// MARK: - update DetailView
 extension DetailRootView: DetailViewViewModelDelegate {
     func updateDetailView() {
         imagesBlockDetailView.spinner.stopAnimating()

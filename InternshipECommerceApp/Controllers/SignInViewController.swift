@@ -17,12 +17,14 @@ class SignInViewController: UIViewController {
         setConstraints()
     }
     
+    // MARK: - setupController
     private func setupController() {
         view.backgroundColor = .systemBackground
         view.addSubview(signInView)
         signInView.delegate = self
     }
     
+    // MARK: - set constraints
     private func setConstraints() {
         NSLayoutConstraint.activate([
             signInView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -33,7 +35,7 @@ class SignInViewController: UIViewController {
     }
 }
 
-// MARK: - Delegate
+// MARK: - SignInViewProtocol
 extension SignInViewController: SignInViewProtocol {
     func showTabBar() {
         let tabBar = TabBarController()

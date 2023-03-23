@@ -16,11 +16,10 @@ class DetailViewController: UIViewController {
         view.addSubview(detailView)
         view.backgroundColor = .systemBackground
         BackButton(to: self).createBackButton()
-//        navigationController?.navigationBar.prefersLargeTitles = false
-//        view.safeAreaLayoutGuide.owningView?.backgroundColor = UIColor(hexString: "#FAF9FF")
         setConstraints()
     }
     
+    // MARK: - set constraints
     private func setConstraints() {
         NSLayoutConstraint.activate([
             detailView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -22),
@@ -30,5 +29,4 @@ class DetailViewController: UIViewController {
             
         ])
     }
-
 }

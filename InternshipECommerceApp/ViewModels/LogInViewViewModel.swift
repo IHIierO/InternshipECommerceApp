@@ -20,22 +20,26 @@ final class LogInViewViewModel: NSObject {
     @Published var password = ""
     @Published var state: LogInInStates = .none
     
+    /// Checking firstName validation
     private var isValidFirstNamePublisher: AnyPublisher<Bool, Never> {
         $firstName
             .map {!$0.isBlank}
             .eraseToAnyPublisher()
     }
+    /// Checking password validation
     private var isValidPasswordPublisher: AnyPublisher<Bool, Never> {
         $password
             .map {$0.isValidPassword}
             .eraseToAnyPublisher()
     }
+    /// Checking all validation condition
     public var isSignInEnabled: AnyPublisher<Bool, Never> {
         Publishers.CombineLatest(isValidFirstNamePublisher, isValidPasswordPublisher)
             .map {$0 && $1}
             .eraseToAnyPublisher()
     }
     
+    // MARK: - submit LogIn
     public func submitLogIn() {
         state = .loading
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) { [weak self] in
@@ -56,6 +60,7 @@ final class LogInViewViewModel: NSObject {
     }
 }
 
+// MARK: - UITextFieldDelegate
 extension LogInViewViewModel: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

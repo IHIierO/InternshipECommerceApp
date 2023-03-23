@@ -17,6 +17,7 @@ class LogInViewController: UIViewController {
         setConstraints()
     }
     
+    // MARK: - setupController
     private func setupController() {
         view.backgroundColor = .systemBackground
         view.addSubview(logInView)
@@ -24,6 +25,7 @@ class LogInViewController: UIViewController {
         BackButton(to: self).createBackButton()
     }
     
+    // MARK: - set constraints
     private func setConstraints() {
         NSLayoutConstraint.activate([
             logInView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -34,6 +36,7 @@ class LogInViewController: UIViewController {
     }
 }
 
+// MARK: - LogInViewProtocol
 extension LogInViewController: LogInViewProtocol {
     func showTabBar() {
         let tabBar = TabBarController()

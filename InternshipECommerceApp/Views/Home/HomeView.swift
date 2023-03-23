@@ -44,6 +44,7 @@ class HomeView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - set constraints
     private func setConstrains() {
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: topAnchor),
@@ -54,7 +55,7 @@ class HomeView: UIView {
     }
 }
 
-
+// MARK: - HomeViewViewModelDelegate
 extension HomeView: HomeViewViewModelDelegate {
     func didSelectLatest(_ latest: Latest) {
         delegate?.didSelectLatest(latest)

@@ -19,6 +19,9 @@ final class HomeViewViewModel: NSObject {
     private var dataSource: UICollectionViewDiffableDataSource<HomeSectionKind, Int>?
     
     public weak var delegate: HomeViewViewModelDelegate?
+    
+    
+    /// Section kind enum
     private enum HomeSectionKind: Int, CaseIterable {
         case menu, latest, flashSale, brands
         
@@ -36,6 +39,7 @@ final class HomeViewViewModel: NSObject {
         }
     }
     
+    /// Latest products container
     private var latests: [Latest] = [] {
         didSet {
             for latest in latests {
@@ -50,8 +54,9 @@ final class HomeViewViewModel: NSObject {
             }
         }
     }
-    
     private var latestCellViewModels: [LatestCollectionViewCellViewModel] = []
+    
+    /// Flash sales products container
     private var flashSales: [FlashSale] = [] {
         didSet {
             for flashSale in flashSales {
@@ -67,7 +72,6 @@ final class HomeViewViewModel: NSObject {
             }
         }
     }
-    
     private var flashSaleCellViewModels: [FlashSaleCollectionViewCellViewModel] = []
     
     private let dataManagerViewModel = DataManagerViewModel()

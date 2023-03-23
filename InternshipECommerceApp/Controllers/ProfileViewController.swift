@@ -14,27 +14,32 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupController()
+        setConstraints()
+    }
+    
+    // MARK: - setupController
+    private func setupController() {
         navigationItem.title = "Profile"
         view.addSubview(profileView)
         profileView.delegate = self
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = false
         view.safeAreaLayoutGuide.owningView?.backgroundColor = UIColor(hexString: "#FAF9FF")
-        setConstraints()
     }
     
+    // MARK: - set constraints
     private func setConstraints() {
         NSLayoutConstraint.activate([
             profileView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             profileView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
             profileView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             profileView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            
         ])
     }
-    
 }
 
+// MARK: - ProfileViewDelegate
 extension ProfileViewController: ProfileViewDelegate {
     func logOut() {
         let signIn = SignInViewController()

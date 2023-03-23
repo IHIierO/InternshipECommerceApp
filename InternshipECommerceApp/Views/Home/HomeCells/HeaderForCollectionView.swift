@@ -32,6 +32,7 @@ class HeaderForCollectionView: UICollectionReusableView {
         return button
     }()
     
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         setConstraints()
@@ -42,7 +43,6 @@ class HeaderForCollectionView: UICollectionReusableView {
     }
     
     //MARK: setConstraints
-    
     private func setConstraints(){
         
         self.addSubviews(headerLabel, viewAllButton)
@@ -54,7 +54,6 @@ class HeaderForCollectionView: UICollectionReusableView {
             
             viewAllButton.topAnchor.constraint(equalTo: topAnchor, constant: 0),
             viewAllButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
-            //viewAllButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.3),
             viewAllButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
         ])
     }

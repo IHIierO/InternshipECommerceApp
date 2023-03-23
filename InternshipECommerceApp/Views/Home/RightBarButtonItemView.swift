@@ -38,6 +38,7 @@ final class RightBarButtonItemView: UIView {
         return container
     }()
     
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
@@ -51,6 +52,7 @@ final class RightBarButtonItemView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - set constraints
     private func setConstraints() {
         NSLayoutConstraint.activate([
             avatarView.topAnchor.constraint(equalTo: topAnchor),

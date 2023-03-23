@@ -49,6 +49,7 @@ class LogInView: UIView {
     }()
     private let validateLabel = DefaultUILabel(inputText: "", alingment: .center)
 
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
@@ -74,6 +75,7 @@ class LogInView: UIView {
         passwordTextField.isSecureTextEntry.toggle()
     }
     
+    // MARK: - initial state
     private func initialState() {
         [firstNameTextField, passwordTextField].forEach {
             $0.backgroundColor = UIColor(hexString: "#E8E8E8")
@@ -87,6 +89,7 @@ class LogInView: UIView {
         logInLabel.isEnabled = false
     }
     
+    // MARK: - bind ViewModel
     private func bindViewModel() {
         NotificationCenter.default
             .publisher(for: UITextField.textDidChangeNotification, object: passwordTextField)
@@ -146,6 +149,7 @@ class LogInView: UIView {
             .store(in: &cancellables)
     }
     
+    // MARK: - set constraints
     private func setConstraints() {
         [logInLabel, firstNameTextField, passwordTextField, logInButton, validateLabel].forEach {
             $0.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true

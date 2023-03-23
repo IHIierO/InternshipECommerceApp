@@ -28,27 +28,32 @@ final class SignInViewViewModel: NSObject {
     
     public weak var delegate: SignInViewViewModelDelegate?
     
+    /// Checking email validation
     private var isValidEmailPublisher: AnyPublisher<Bool, Never> {
         $email
             .map {$0.isEmail}
             .eraseToAnyPublisher()
     }
+    /// Checking firstName validation
     private var isValidFirstNamePublisher: AnyPublisher<Bool, Never> {
         $firstName
             .map {!$0.isBlank}
             .eraseToAnyPublisher()
     }
+    /// Checking lastName validation
     private var isValidLastNamePublisher: AnyPublisher<Bool, Never> {
         $lastName
             .map {!$0.isBlank}
             .eraseToAnyPublisher()
     }
+    /// Checking all validation condition
     public var isSignInEnabled: AnyPublisher<Bool, Never> {
         Publishers.CombineLatest3(isValidEmailPublisher, isValidFirstNamePublisher, isValidLastNamePublisher)
             .map {$0 && $1 && $2}
             .eraseToAnyPublisher()
     }
     
+    // MARK: - submit SignIn
     public func submitSignIn() {
         state = .loading
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) { [weak self] in
